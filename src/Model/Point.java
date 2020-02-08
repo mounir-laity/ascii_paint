@@ -18,12 +18,12 @@ public class Point {
         this(p.x, p.y);
     }
 
-    void move(double dx, double dy) {
+    public void move(double dx, double dy) {
         this.x = x + dx;
         this.y = y + dy;
     }
 
-    double distanceTo(Point other) {
+    public double distanceTo(Point other) {
         return (Math.hypot((other.x - this.x), (other.y - this.y)));
     }
 
@@ -34,5 +34,5 @@ public class Point {
     public double getY() {
         return y;
     }
-    
+
 }
