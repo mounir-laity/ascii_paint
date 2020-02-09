@@ -13,12 +13,11 @@ public class Drawing {
     private int height;
     private int width;
 
-    public Drawing() {
-    }
 
     public Drawing(int height, int width) {
         this.height = height;
         this.width = width;
+        shapes = new ArrayList<>();
     }
 
     public void addShape(Shape shape) {
@@ -26,7 +25,7 @@ public class Drawing {
     }
 
     public Shape getShapeAt(Point p) {
-        for (int i = this.shapes.size(); i >= 0; i++) {
+        for (int i = this.shapes.size()-1; i >= 0; i--) {
             if (shapes.get(i).isInside(p)) {
                 return shapes.get(i);
             }
@@ -34,11 +33,11 @@ public class Drawing {
         return null;
     }
 
-    int getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    int getWidth() {
+    public int getWidth() {
         return width;
     }
 
