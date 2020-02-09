@@ -47,11 +47,11 @@ public class Controller {
     }
 
     public void verify(String command) {
-        if (command.matches("add circle [0-9]|1[0-9] [0-9]|1[0-9] [0-9]|1[0-9] \\w")) {
+        if (command.matches("add circle [0-9] [0-9] [0-9] \\w")) {
             tokenizeCircle(command);
-        } else if (command.matches("add rectangle [0-20] [0-20] [0-20] [0-20] \\w")) {
+        } else if (command.matches("add rectangle [0-9] [0-9] [0-9] [0-9] \\w")) {
             tokenizeRectangle(command);
-        } else if (command.matches("add square [0-20] [0-20] [0-20] \\w")) {
+        } else if (command.matches("add square [0-9] [0-9] [0-9] \\w")) {
             tokenizeSquare(command);
         } else {
             System.out.println("Incorrect format");
@@ -82,6 +82,8 @@ public class Controller {
 
     public void tokenizeSquare(String command) {
         StringTokenizer tokens = new StringTokenizer(command);
+        tokens.nextToken();
+        tokens.nextToken();
         paint.newSquare(Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
