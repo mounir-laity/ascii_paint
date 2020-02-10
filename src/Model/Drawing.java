@@ -15,6 +15,9 @@ public class Drawing {
     private int width;
 
     public Drawing(int height, int width) {
+        if(height < 0 || width < 0) {
+            throw new IllegalArgumentException("The height and width must be positive");
+        }
         this.height = height;
         this.width = width;
         shapes = new ArrayList<>();
@@ -26,6 +29,9 @@ public class Drawing {
      * @param shape la forme à ajouter.
      */
     public void addShape(Shape shape) {
+        if(shape.equals(null)) {
+            throw new NullPointerException("The shape cannot be null");
+        }
         shapes.add(shape);
     }
 
@@ -37,6 +43,9 @@ public class Drawing {
      * null s'il n'y en a pas.
      */
     public Shape getShapeAt(Point p) {
+        if(p.equals(null)) {
+            throw new NullPointerException("The point cannot be null");
+        }
         for (int i = this.shapes.size() - 1; i >= 0; i--) {
             if (shapes.get(i).isInside(p)) {
                 return shapes.get(i);

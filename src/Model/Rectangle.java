@@ -14,6 +14,9 @@ public class Rectangle extends ColoredShape {
 
     public Rectangle(Point upperLeft, double width, double height, char color) {
         super(color);
+        if(width < 0 || height < 0) {
+            throw new IllegalArgumentException("The width and height must be positive");
+        }
         this.upperLeft = new Point(upperLeft);
         this.width = width;
         this.height = height;
@@ -27,6 +30,9 @@ public class Rectangle extends ColoredShape {
      */
     @Override
     public boolean isInside(Point p) {
+        if(p.equals(null)) {
+            throw new NullPointerException("The point cannot be null");
+        }
         return !(p.getX() < upperLeft.getX() || p.getY() < upperLeft.getY()
                 || p.getX() > upperLeft.getX() + width
                 || p.getY() > upperLeft.getY() + height);
