@@ -23,11 +23,8 @@ public class Controller {
         Scanner kb = new Scanner(System.in);
         System.out.println("What would you like to draw ? (type help for help)");
         String command = kb.nextLine();
-        while (!"exit".equals(command)) {
-            if (command.equals("show")) {
-                paint.asAscii();
-                command = kb.nextLine();
-            } else if (command.equals("help")) {
+        while (!"show".equals(command)) {
+            if (command.equals("help")) {
                 help();
                 command = kb.nextLine();
             } else {
@@ -35,6 +32,8 @@ public class Controller {
                 command = kb.nextLine();
             }
         }
+        paint.asAscii();
+        System.exit(0);
     }
 
     /**
@@ -42,7 +41,6 @@ public class Controller {
      */
     public void help() {
         System.out.println("Here's the list of all other possible commands : ");
-        System.out.println("exit");
         System.out.println("add circle x y radius color");
         System.out.println("add rectangle x y width height color");
         System.out.println("add square x y side color");

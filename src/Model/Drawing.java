@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -51,5 +52,40 @@ public class Drawing {
     public int getWidth() {
         return width;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.shapes);
+        hash = 53 * hash + this.height;
+        hash = 53 * hash + this.width;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Drawing other = (Drawing) obj;
+        if (this.height != other.height) {
+            return false;
+        }
+        if (this.width != other.width) {
+            return false;
+        }
+        if (!Objects.equals(this.shapes, other.shapes)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }
