@@ -14,6 +14,12 @@ public class AsciiPaint {
     public AsciiPaint() {
     }
 
+    /**
+     * Constructeur d'AsciiPaint
+     *
+     * @param width la largeur du canvas.
+     * @param height la hauteur du canvas.
+     */
     public AsciiPaint(int width, int height) {
         drawing = new Drawing(width, height);
     }

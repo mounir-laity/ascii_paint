@@ -12,9 +12,19 @@ public class Rectangle extends ColoredShape {
     private double width;
     private double height;
 
+    /**
+     * Constructeur du rectangle.
+     *
+     * @param upperLeft le point supérieur gauche du rectangle.
+     * @param width la largeur du rectangle.
+     * @param height la hauteur du rectangle.
+     * @param color la couleur du rectangle.
+     * @throws IllegalArgumentException si la hauteur ou la largeur est
+     * négative.
+     */
     public Rectangle(Point upperLeft, double width, double height, char color) {
         super(color);
-        if(width < 0 || height < 0) {
+        if (width < 0 || height < 0) {
             throw new IllegalArgumentException("The width and height must be positive");
         }
         this.upperLeft = new Point(upperLeft);
@@ -27,10 +37,11 @@ public class Rectangle extends ColoredShape {
      *
      * @param p le point à vérifier.
      * @return true si le point se trouve dans la forme, false sinon.
+     * @throws NullPointerException si le point est null.
      */
     @Override
     public boolean isInside(Point p) {
-        if(p.equals(null)) {
+        if (p.equals(null)) {
             throw new NullPointerException("The point cannot be null");
         }
         return !(p.getX() < upperLeft.getX() || p.getY() < upperLeft.getY()
@@ -81,6 +92,5 @@ public class Rectangle extends ColoredShape {
         }
         return true;
     }
-    
-    
+
 }

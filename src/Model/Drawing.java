@@ -14,8 +14,16 @@ public class Drawing {
     private int height;
     private int width;
 
+    /**
+     * Constructeur de Drawing.
+     *
+     * @param height la hauteur du canvas.
+     * @param width la largeur du canvas.
+     * @throws IllegalArgumentException si au moins un des paramètres est
+     * négatif.
+     */
     public Drawing(int height, int width) {
-        if(height < 0 || width < 0) {
+        if (height < 0 || width < 0) {
             throw new IllegalArgumentException("The height and width must be positive");
         }
         this.height = height;
@@ -27,9 +35,10 @@ public class Drawing {
      * Permet d'ajouter une forme à la liste de formes que Drawing possède.
      *
      * @param shape la forme à ajouter.
+     * @throws NullPointerException si la forme est null.
      */
     public void addShape(Shape shape) {
-        if(shape.equals(null)) {
+        if (shape.equals(null)) {
             throw new NullPointerException("The shape cannot be null");
         }
         shapes.add(shape);
@@ -41,9 +50,10 @@ public class Drawing {
      * @param p le point auquel on cherche la forme correspondante.
      * @return la dernière forme de la liste contenant le point en paramètre ou
      * null s'il n'y en a pas.
+     * @throws NullPointerException si le point est null.
      */
     public Shape getShapeAt(Point p) {
-        if(p.equals(null)) {
+        if (p.equals(null)) {
             throw new NullPointerException("The point cannot be null");
         }
         for (int i = this.shapes.size() - 1; i >= 0; i--) {
@@ -94,7 +104,5 @@ public class Drawing {
         }
         return true;
     }
-    
-    
 
 }

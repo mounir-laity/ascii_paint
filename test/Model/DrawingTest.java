@@ -13,25 +13,24 @@ import static org.junit.Assert.*;
  * @author laity
  */
 public class DrawingTest {
-    
+
     public DrawingTest() {
     }
 
     /**
      * Test of addShape method, of class Drawing.
      */
-    @Test (expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
     public void testAddShape() {
         Shape shape = null;
         Drawing instance = null;
         instance.addShape(shape);
     }
-    
 
     /**
      * Test of getShapeAt method, of class Drawing.
      */
-    @Test (expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
     public void testGetShapeAtWhenPointIsNull() {
         Point p = null;
         Drawing instance = new Drawing(20, 20);
@@ -41,14 +40,14 @@ public class DrawingTest {
     /**
      * Test of getHeight method, of class Drawing.
      */
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testGetHeightWhenHeightIsNegative() {
         Drawing instance = new Drawing(-2, 4);
     }
-    
-    @Test (expected = IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void testGetWidthWhenHeightIsNegative() {
         Drawing instance = new Drawing(2, -4);
     }
-    
+
 }

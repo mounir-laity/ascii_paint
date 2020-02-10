@@ -9,11 +9,22 @@ public class Point {
     private double x;
     private double y;
 
+    /**
+     * Constructeur du point.
+     *
+     * @param x l'abcisse du point.
+     * @param y l'ordonnée du point.
+     */
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
+    /**
+     * Constructeur par copie du point.
+     *
+     * @param p le point à copier.
+     */
     public Point(Point p) {
         this(p.x, p.y);
     }
@@ -75,7 +86,5 @@ public class Point {
         }
         return true;
     }
-    
-    
 
 }

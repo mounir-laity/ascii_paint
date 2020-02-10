@@ -8,6 +8,11 @@ public abstract class ColoredShape implements Shape {
 
     private char color;
 
+    /**
+     * Constructeur de ColoredShape
+     *
+     * @param color la couleur de la forme.
+     */
     public ColoredShape(char color) {
         this.color = color;
     }
@@ -45,7 +50,5 @@ public abstract class ColoredShape implements Shape {
         }
         return true;
     }
-    
-    
 
 }

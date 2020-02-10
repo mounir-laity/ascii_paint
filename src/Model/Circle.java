@@ -11,9 +11,17 @@ public class Circle extends ColoredShape {
     private Point center;
     private double radius;
 
+    /**
+     * Constructeur du cercle.
+     *
+     * @param center le centre du cercle.
+     * @param radius le rayon du cercle.
+     * @param color la couleur du cercle.
+     * @throws IllegalArgumentException si le rayon est négatif.
+     */
     public Circle(Point center, double radius, char color) {
         super(color);
-        if(radius < 0) {
+        if (radius < 0) {
             throw new IllegalArgumentException("The radius must be positive");
         }
         this.center = new Point(center);
@@ -25,10 +33,11 @@ public class Circle extends ColoredShape {
      *
      * @param p le point à vérifier.
      * @return true si le point se trouve dans la forme, false sinon.
+     * @throws NullPointerException si le point en paramètre est null.
      */
     @Override
     public boolean isInside(Point p) {
-        if(p == null) {
+        if (p == null) {
             throw new NullPointerException("The point cannot be null");
         }
         return p.distanceTo(center) <= radius;
@@ -81,7 +90,5 @@ public class Circle extends ColoredShape {
         }
         return true;
     }
-    
-    
 
 }
