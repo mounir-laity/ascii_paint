@@ -47,11 +47,14 @@ public class Controller {
     }
 
     public void verify(String command) {
-        if (command.matches("add circle [0-9] [0-9] [0-9] \\w")) {
+        if (command.matches("add circle ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20)"
+                + " ([0-9]|1[0-9]|20) \\w")) {
             tokenizeCircle(command);
-        } else if (command.matches("add rectangle [0-9] [0-9] [0-9] [0-9] \\w")) {
+        } else if (command.matches("add rectangle ([0-9]|1[0-9]|20) "
+                + "([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
             tokenizeRectangle(command);
-        } else if (command.matches("add square [0-9] [0-9] [0-9] \\w")) {
+        } else if (command.matches("add square ([0-9]|1[0-9]|20)"
+                + " ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
             tokenizeSquare(command);
         } else {
             System.out.println("Incorrect format");
