@@ -5,6 +5,9 @@
  */
 package Model;
 
+import g53649.AsciiPaint.model.Shape;
+import g53649.AsciiPaint.model.Drawing;
+import g53649.AsciiPaint.model.Point;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

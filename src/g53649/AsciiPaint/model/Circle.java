@@ -1,4 +1,4 @@
-package Model;
+package g53649.AsciiPaint.model;
 
 import java.util.Objects;
 
@@ -54,19 +54,11 @@ public class Circle extends ColoredShape {
         center = new Point(center.getX() + dx, center.getY() + dy);
     }
 
-    public Point getCenter() {
-        return new Point(center);
-    }
-
-    public double getRadius() {
-        return radius;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.center);
-        hash = 61 * hash + (int) (Double.doubleToLongBits(this.radius) ^ (Double.doubleToLongBits(this.radius) >>> 32));
+        hash = 61 * hash + Objects.hashCode(center);
+        hash = 61 * hash + (int) (Double.doubleToLongBits(radius) ^ (Double.doubleToLongBits(this.radius) >>> 32));
         return hash;
     }
 
@@ -82,10 +74,10 @@ public class Circle extends ColoredShape {
             return false;
         }
         final Circle other = (Circle) obj;
-        if (Double.doubleToLongBits(this.radius) != Double.doubleToLongBits(other.radius)) {
+        if (Double.doubleToLongBits(radius) != Double.doubleToLongBits(other.radius)) {
             return false;
         }
-        if (!Objects.equals(this.center, other.center)) {
+        if (!Objects.equals(center, other.center)) {
             return false;
         }
         return true;

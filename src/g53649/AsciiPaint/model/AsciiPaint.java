@@ -1,4 +1,4 @@
-package View;
+package g53649.AsciiPaint.model;
 
 import g53649.AsciiPaint.model.Circle;
 import g53649.AsciiPaint.model.Rectangle;
@@ -70,7 +70,11 @@ public class AsciiPaint {
         drawing.addShape(square);
     }
 
-    /**
+    public Drawing getDrawing() {
+        return drawing;
+    }
+
+     /**
      * Permet de représenter sur l'output les différentes formes ajoutées par
      * l'utilisateur.
      */

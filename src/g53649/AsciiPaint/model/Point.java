@@ -1,4 +1,4 @@
-package Model;
+package g53649.AsciiPaint.model;
 
 /**
  *
@@ -36,8 +36,8 @@ public class Point {
      * @param dy le décalage vertical.
      */
     public void move(int dx, int dy) {
-        x = x + dx;
-        y = y + dy;
+        x += dx;
+        y += dy;
     }
 
     /**

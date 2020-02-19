@@ -1,4 +1,4 @@
-package Model;
+package g53649.AsciiPaint.model;
 
 /**
  *
@@ -22,14 +22,10 @@ public abstract class ColoredShape implements Shape {
         return color;
     }
 
-    public void setColor(char color) {
-        this.color = color;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + this.color;
+        hash = 41 * hash + color;
         return hash;
     }
 
@@ -45,7 +41,7 @@ public abstract class ColoredShape implements Shape {
             return false;
         }
         final ColoredShape other = (ColoredShape) obj;
-        if (this.color != other.color) {
+        if (color != other.color) {
             return false;
         }
         return true;

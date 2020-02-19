@@ -1,4 +1,4 @@
-package Model;
+package g53649.AsciiPaint.model;
 
 /**
  *

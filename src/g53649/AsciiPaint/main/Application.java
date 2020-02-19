@@ -1,6 +1,6 @@
-package Main;
+package g53649.AsciiPaint.main;
 
-import Controller.Controller;
+import g53649.AsciiPaint.controller.Controller;
 
 /**
  *
