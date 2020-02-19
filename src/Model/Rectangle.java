@@ -9,8 +9,8 @@ import java.util.Objects;
 public class Rectangle extends ColoredShape {
 
     private Point upperLeft;
-    private double width;
-    private double height;
+    private int width;
+    private int height;
 
     /**
      * Constructeur du rectangle.
@@ -22,7 +22,7 @@ public class Rectangle extends ColoredShape {
      * @throws IllegalArgumentException si la hauteur ou la largeur est
      * négative.
      */
-    public Rectangle(Point upperLeft, double width, double height, char color) {
+    public Rectangle(Point upperLeft, int width, int height, char color) {
         super(color);
         if (width < 0 || height < 0) {
             throw new IllegalArgumentException("The width and height must be positive");
@@ -41,7 +41,7 @@ public class Rectangle extends ColoredShape {
      */
     @Override
     public boolean isInside(Point p) {
-        if (p.equals(null)) {
+        if (p == null) {
             throw new NullPointerException("The point cannot be null");
         }
         return !(p.getX() < upperLeft.getX() || p.getY() < upperLeft.getY()
@@ -56,8 +56,8 @@ public class Rectangle extends ColoredShape {
      * @param dy le décalage vertical.
      */
     @Override
-    public void move(double dx, double dy) {
-        this.upperLeft = new Point(upperLeft.getX() + dx, upperLeft.getY() + dy);
+    public void move(int dx, int dy) {
+       upperLeft = new Point(upperLeft.getX() + dx, upperLeft.getY() + dy);
     }
 
     @Override

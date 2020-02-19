@@ -48,7 +48,7 @@ public class PointTest {
     }
     @Test
     public void EqualsWhenDifferentType() {
-    Point other = new Point(2.0,3.0);
+    Point other = new Point(2,3);
         Point instance = new Point(2,3);
         boolean expResult = true;
         boolean Result = instance.equals(other);

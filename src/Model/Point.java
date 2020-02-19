@@ -6,8 +6,8 @@ package Model;
  */
 public class Point {
 
-    private double x;
-    private double y;
+    private int x;
+    private int y;
 
     /**
      * Constructeur du point.
@@ -15,7 +15,7 @@ public class Point {
      * @param x l'abcisse du point.
      * @param y l'ordonnée du point.
      */
-    public Point(double x, double y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -35,9 +35,9 @@ public class Point {
      * @param dx le décalage horizontal.
      * @param dy le décalage vertical.
      */
-    public void move(double dx, double dy) {
-        this.x = x + dx;
-        this.y = y + dy;
+    public void move(int dx, int dy) {
+        x = x + dx;
+        y = y + dy;
     }
 
     /**
@@ -50,11 +50,11 @@ public class Point {
         return (Math.hypot((other.x - this.x), (other.y - this.y)));
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
-    public double getY() {
+    public int getY() {
         return y;
     }
 

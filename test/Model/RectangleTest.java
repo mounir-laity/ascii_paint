@@ -36,8 +36,8 @@ public class RectangleTest {
      */
     @Test
     public void testMoveWhenBothAreZeros() {
-        double dx = 0.0;
-        double dy = 0.0;
+        int dx = 0;
+        int dy = 0;
         Point upperLeft = new Point(2, 2);
         Rectangle instance = new Rectangle(upperLeft, 4, 3, 'd');
         Rectangle expResult = new Rectangle(upperLeft, 4, 3, 'd');

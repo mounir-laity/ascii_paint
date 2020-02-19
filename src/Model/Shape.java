@@ -20,7 +20,7 @@ public interface Shape {
      * @param dx le décalage horizontal.
      * @param dy le décalage vertical.
      */
-    void move(double dx, double dy);
+    void move(int dx, int dy);
 
     char getColor();
 }

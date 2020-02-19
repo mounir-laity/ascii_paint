@@ -1,7 +1,6 @@
 package View;
 
 import Model.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -32,7 +31,7 @@ public class AsciiPaint {
      * @param radius le rayon du cercle.
      * @param color la couleur du cercle.
      */
-    public void newCircle(int x, int y, double radius, char color) {
+    public void newCircle(int x, int y, int radius, char color) {
         Point center = new Point(x, y);
         Circle circle = new Circle(center, radius, color);
         drawing.addShape(circle);
@@ -47,7 +46,7 @@ public class AsciiPaint {
      * @param height la hauteur du rectangle.
      * @param color la couleur du rectangle.
      */
-    public void newRectangle(int x, int y, double width, double height, char color) {
+    public void newRectangle(int x, int y, int width, int height, char color) {
         Point upperLeft = new Point(x, y);
         Rectangle rectangle = new Rectangle(upperLeft, width, height, color);
         drawing.addShape(rectangle);
@@ -61,7 +60,7 @@ public class AsciiPaint {
      * @param side le côté du carré.
      * @param color la couleur du carré.
      */
-    public void newSquare(int x, int y, double side, char color) {
+    public void newSquare(int x, int y, int side, char color) {
         Point upperLeft = new Point(x, y);
         Square square = new Square(upperLeft, side, color);
         drawing.addShape(square);

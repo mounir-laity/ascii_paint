@@ -54,8 +54,8 @@ public class CircleTest {
     @Test
     public void testMoveWhenBothAreZeros() {
         System.out.println("move");
-        double dx = 0.0;
-        double dy = 0.0;
+        int dx = 0;
+        int dy = 0;
         Point center = new Point(1, 1);
         Circle instance = new Circle(center, 4, 'l');
         instance.move(dx, dy);

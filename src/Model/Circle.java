@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Circle extends ColoredShape {
 
     private Point center;
-    private double radius;
+    private int radius;
 
     /**
      * Constructeur du cercle.
@@ -19,7 +19,7 @@ public class Circle extends ColoredShape {
      * @param color la couleur du cercle.
      * @throws IllegalArgumentException si le rayon est négatif.
      */
-    public Circle(Point center, double radius, char color) {
+    public Circle(Point center, int radius, char color) {
         super(color);
         if (radius < 0) {
             throw new IllegalArgumentException("The radius must be positive");
@@ -50,8 +50,8 @@ public class Circle extends ColoredShape {
      * @param dy le décalage vertical.
      */
     @Override
-    public void move(double dx, double dy) {
-        this.center = new Point(center.getX() + dx, center.getY() + dy);
+    public void move(int dx, int dy) {
+        center = new Point(center.getX() + dx, center.getY() + dy);
     }
 
     public Point getCenter() {

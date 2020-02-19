@@ -38,7 +38,7 @@ public class Drawing {
      * @throws NullPointerException si la forme est null.
      */
     public void addShape(Shape shape) {
-        if (shape.equals(null)) {
+        if (shape == null) {
             throw new NullPointerException("The shape cannot be null");
         }
         shapes.add(shape);
@@ -53,7 +53,7 @@ public class Drawing {
      * @throws NullPointerException si le point est null.
      */
     public Shape getShapeAt(Point p) {
-        if (p.equals(null)) {
+        if (p == null) {
             throw new NullPointerException("The point cannot be null");
         }
         for (int i = this.shapes.size() - 1; i >= 0; i--) {
