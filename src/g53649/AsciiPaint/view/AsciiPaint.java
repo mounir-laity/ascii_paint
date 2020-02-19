@@ -1,4 +1,4 @@
-package View;
+package g53649.AsciiPaint.view;
 
 import g53649.AsciiPaint.model.Circle;
 import g53649.AsciiPaint.model.Rectangle;

@@ -65,6 +65,9 @@ public class Controller {
         } else if (command.matches("add square ([0-9]|1[0-9]|20)"
                 + " ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
             tokenizeSquare(command);
+        } else if (command.matches("add line ([0-9]|1[0-9]|20)"
+                + " ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
+            tokenizeLine(command);
         } else {
             System.out.println("Incorrect format. Type help for the list of "
                     + "valid commands");
@@ -116,6 +119,22 @@ public class Controller {
         tokens.nextToken();
         tokens.nextToken();
         paint.newSquare(Integer.parseInt(tokens.nextToken()),
+                Integer.parseInt(tokens.nextToken()),
+                Integer.parseInt(tokens.nextToken()),
+                command.charAt(command.length() - 1));
+    }
+    
+    /**
+     * Gère la création d'une droite en extrayant les paramètres de la commande de
+     * l'utilisateur.
+     * @param command la commande donnée par l'utilisateur.
+     */
+    public void tokenizeLine(String command) {
+        StringTokenizer tokens = new StringTokenizer(command);
+        tokens.nextToken();
+        tokens.nextToken();
+        paint.newLine(Integer.parseInt(tokens.nextToken()),
+                Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 command.charAt(command.length() - 1));

@@ -70,11 +70,27 @@ public class AsciiPaint {
         drawing.addShape(square);
     }
 
+    /**
+     * Crée une nouvelle droite avec les valeurs entrées en paramètres.
+     *
+     * @param p1x l'abcisse du premier point de la droite.
+     * @param p1y l'ordonnée du premier point de la droite.
+     * @param p2x l'abcisse du second point de la droite.
+     * @param p2y l'ordonnée du second point de la droite.
+     * @param color la couleur de la droite
+     */
+    public void newLine(int p1x, int p1y, int p2x, int p2y, char color) {
+        Point p1 = new Point(p1x, p1y);
+        Point p2 = new Point(p2x, p2y);
+        Line line = new Line(p1, p2, color);
+        drawing.addShape(line);
+    }
+
     public Drawing getDrawing() {
         return drawing;
     }
 
-     /**
+    /**
      * Permet de représenter sur l'output les différentes formes ajoutées par
      * l'utilisateur.
      */
