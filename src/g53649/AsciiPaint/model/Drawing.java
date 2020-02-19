@@ -73,6 +73,12 @@ public class Drawing {
     }
 
     @Override
+    public String toString() {
+        return "Drawing{" + "shapes=" + shapes + ", height=" + height + ", width=" + width + '}';
+    }
+
+    
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 53 * hash + Objects.hashCode(this.shapes);

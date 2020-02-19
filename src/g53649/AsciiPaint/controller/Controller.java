@@ -23,16 +23,21 @@ public class Controller {
         Scanner kb = new Scanner(System.in);
         System.out.println("What would you like to draw ? (type help for help)");
         String command = kb.nextLine();
-        while (!"show".equals(command)) {
+        while (!"equals".equals(command)) {
             if (command.equals("help")) {
                 help();
+                command = kb.nextLine();
+            } else if (command.equals("show")){
+                paint.asAscii();
+                command = kb.nextLine();
+            } else if (command.equals("list")){
+                System.out.println(paint.getDrawing().toString());
                 command = kb.nextLine();
             } else {
                 verify(command);
                 command = kb.nextLine();
             }
         }
-        paint.asAscii();
         System.exit(0);
     }
 
@@ -44,6 +49,7 @@ public class Controller {
         System.out.println("add circle x y radius color");
         System.out.println("add rectangle x y width height color");
         System.out.println("add square x y side color");
+        System.out.println("add line x1 y1 x2 y2 color");
         System.out.println("show");
         System.out.println("");
         interprete();

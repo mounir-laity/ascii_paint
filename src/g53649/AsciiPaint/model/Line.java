@@ -18,6 +18,9 @@ public class Line extends ColoredShape {
      */
     public Line(Point firstPoint, Point secondPoint, char color) {
         super(color);
+        if(firstPoint.equals(secondPoint)) {
+            throw new IllegalArgumentException("The two points must be different ");
+        }
         this.p1 = firstPoint;
         this.p2 = secondPoint;
     }
