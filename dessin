@@ -1,0 +1,4 @@
+add circle 2 4 3 m
+add line 1 4 1 8 d
+show
+eof

@@ -1,10 +1,6 @@
 package g53649.AsciiPaint.model;
 
-import g53649.AsciiPaint.model.Circle;
-import g53649.AsciiPaint.model.Rectangle;
-import g53649.AsciiPaint.model.Drawing;
-import g53649.AsciiPaint.model.Square;
-import g53649.AsciiPaint.model.Point;
+import java.util.Stack;
 
 /**
  *
@@ -13,6 +9,7 @@ import g53649.AsciiPaint.model.Point;
 public class AsciiPaint {
 
     private Drawing drawing;
+    private Stack<Command> stack;
 
     public AsciiPaint() {
     }
@@ -36,9 +33,8 @@ public class AsciiPaint {
      * @param color la couleur du cercle.
      */
     public void newCircle(int x, int y, int radius, char color) {
-        Point center = new Point(x, y);
-        Circle circle = new Circle(center, radius, color);
-        drawing.addShape(circle);
+        Command add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
+        stack.add(add);
     }
 
     /**

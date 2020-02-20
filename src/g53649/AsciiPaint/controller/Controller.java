@@ -1,8 +1,13 @@
 package g53649.AsciiPaint.controller;
 
 import g53649.AsciiPaint.model.AsciiPaint;
+import g53649.AsciiPaint.view.View;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,10 +16,15 @@ import java.util.StringTokenizer;
 public class Controller {
 
     private final AsciiPaint paint;
+    private final View view;
+    private int pause = 0;
 
-    public Controller() {
-        this.paint = new AsciiPaint(20, 20);
+    public Controller(AsciiPaint paint, View view) {
+        this.paint = paint;
+        this.view = view;
     }
+
+ 
 
     /**
      * Se charge d'interpréter les commandes de l'utilisateur.
@@ -23,19 +33,35 @@ public class Controller {
         Scanner kb = new Scanner(System.in);
         System.out.println("What would you like to draw ? (type help for help)");
         String command = kb.nextLine();
-        while (!"equals".equals(command)) {
-            if (command.equals("help")) {
-                help();
-                command = kb.nextLine();
-            } else if (command.equals("show")){
-                paint.asAscii();
-                command = kb.nextLine();
-            } else if (command.equals("list")){
-                System.out.println(paint.getDrawing().toString());
-                command = kb.nextLine();
-            } else {
-                verify(command);
-                command = kb.nextLine();
+        while (!"quit".equals(command)) {
+            switch (command) {
+                case "help":
+                    help();
+                    command = kb.nextLine();
+                    break;
+                case "show":
+                    paint.asAscii();
+                    command = kb.nextLine();
+                    break;
+                case "list":
+                    System.out.println(paint.getDrawing().toString());
+                    command = kb.nextLine();
+                    break;
+                case "load":
+                    load();
+                    break;
+                case "eof":
+                    view.reset();
+                    command = kb.nextLine();
+                    break;
+
+//                case "pause":
+//                    pause = Integer.parseInt(elements[1]);
+//                    break;
+                default:
+                    verify(command);
+                    command = kb.nextLine();
+                    break;
             }
         }
         System.exit(0);
@@ -129,10 +155,11 @@ public class Controller {
                 Integer.parseInt(tokens.nextToken()),
                 command.charAt(command.length() - 1));
     }
-    
+
     /**
-     * Gère la création d'une droite en extrayant les paramètres de la commande de
-     * l'utilisateur.
+     * Gère la création d'une droite en extrayant les paramètres de la commande
+     * de l'utilisateur.
+     *
      * @param command la commande donnée par l'utilisateur.
      */
     public void tokenizeLine(String command) {
@@ -144,5 +171,22 @@ public class Controller {
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 command.charAt(command.length() - 1));
+    }
+
+    public void pause() throws InterruptedException {
+        Thread.sleep(pause);
+    }
+
+    private void load() {
+        try {
+            view.setInput(new FileInputStream("dessin"));
+        } catch (FileNotFoundException ex) {
+            System.err.println("File not found");
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void setPause(int pause) {
+        this.pause = pause;
     }
 }

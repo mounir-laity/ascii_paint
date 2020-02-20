@@ -1,6 +1,8 @@
 package g53649.AsciiPaint.main;
 
 import g53649.AsciiPaint.controller.Controller;
+import g53649.AsciiPaint.model.AsciiPaint;
+import g53649.AsciiPaint.view.View;
 
 /**
  *
@@ -8,8 +10,15 @@ import g53649.AsciiPaint.controller.Controller;
  */
 public class Application {
 
-    private final Controller controller = new Controller();
+    private final Controller controller;
 
+    public Application() {
+        AsciiPaint ascii = new AsciiPaint(30, 30);
+        View view = new View();
+        this.controller = new Controller(ascii, view);
+    }
+
+    
     /**
      * Démarre le programme.
      */
@@ -24,6 +33,7 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
+        
         Application app = new Application();
         app.start();
     }
