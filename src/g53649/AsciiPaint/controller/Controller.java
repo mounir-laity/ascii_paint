@@ -47,8 +47,18 @@ public class Controller {
                     System.out.println(paint.getDrawing().toString());
                     command = view.ask();
                     break;
+                case "move":
+                    paint.getDrawing().move(Integer.parseInt(tokens.nextToken()),
+                            Integer.parseInt(tokens.nextToken()),
+                                    Integer.parseInt(tokens.nextToken()));
+                    command = view.ask();
+                    break;
                 case "load":
                     load();
+                    command = view.ask();
+                    break;
+                case "remove":
+                    paint.getDrawing().remove(Integer.parseInt(tokens.nextToken()));
                     command = view.ask();
                     break;
                 case "eof":

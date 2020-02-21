@@ -6,23 +6,23 @@ package g53649.AsciiPaint.model;
  */
 public  class AddCommand implements Command{
 
-    private Drawing paint;
+    private Drawing drawing;
     private Shape shape;
 
-    public AddCommand(Drawing paint, Shape shape) {
-        this.paint = paint;
+    public AddCommand(Drawing drawing, Shape shape) {
+        this.drawing = drawing;
         this.shape = shape;
     }
     
     
     @Override
     public void execute() {
-        paint.addShape(shape);
+        drawing.addShape(shape);
     }
 
    @Override
    public void undo() {
-//        paint.remove(shape);
+       drawing.remove(0);
     }
     
 }

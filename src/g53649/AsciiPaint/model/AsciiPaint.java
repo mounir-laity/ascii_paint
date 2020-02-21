@@ -85,5 +85,4 @@ public class AsciiPaint {
         return drawing;
     }
 
-    
 }

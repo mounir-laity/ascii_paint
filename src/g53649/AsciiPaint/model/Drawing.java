@@ -63,6 +63,10 @@ public class Drawing {
         }
         return null;
     }
+    
+    public void move(int index, int dx, int dy) {
+        shapes.get(index).move(dx, dy);
+    }
 
     public int getHeight() {
         return height;
@@ -70,6 +74,10 @@ public class Drawing {
 
     public int getWidth() {
         return width;
+    }
+    
+    public void remove(int index) {
+        shapes.remove(index);
     }
 
     @Override

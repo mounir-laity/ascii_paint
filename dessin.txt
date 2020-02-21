@@ -1,5 +1,10 @@
-add square 12 12 4 f
+add square 8 8 4 f
 show
-add rectangle 2 4 3 5 m
+add line 0 0 20 20 p
+show
+move 0 4 5
+show
+remove 0
+list
 show
 eof
