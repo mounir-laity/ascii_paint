@@ -11,9 +11,6 @@ public class AsciiPaint {
     private Drawing drawing;
     private Stack<Command> stack;
 
-    public AsciiPaint() {
-    }
-
     /**
      * Constructeur d'AsciiPaint
      *
@@ -22,6 +19,7 @@ public class AsciiPaint {
      */
     public AsciiPaint(int width, int height) {
         drawing = new Drawing(width, height);
+        stack = new Stack<>();
     }
 
     /**

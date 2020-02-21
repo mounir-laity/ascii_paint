@@ -3,7 +3,6 @@ package g53649.AsciiPaint.view;
 import g53649.AsciiPaint.model.Drawing;
 import g53649.AsciiPaint.model.Point;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -29,6 +28,11 @@ public class View {
         kb = new Scanner(System.in);
     }
     
+    public String ask() {
+        String command = kb.nextLine();
+        return command;
+    }
+    
     /**
      * Indique à l'utilisateur quelles sont les commandes possibles.
      */
@@ -40,10 +44,6 @@ public class View {
         System.out.println("add line x1 y1 x2 y2 color");
         System.out.println("show");
         System.out.println("");
-    }
-
-    public Scanner getKb() {
-        return kb;
     }
     
     /**
@@ -62,4 +62,10 @@ public class View {
             System.out.print("\n");
         }
     }
+
+    public Scanner getKb() {
+        return kb;
+    }
+    
+    
 }

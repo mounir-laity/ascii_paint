@@ -3,6 +3,8 @@ package g53649.AsciiPaint.controller;
 import g53649.AsciiPaint.model.AsciiPaint;
 import g53649.AsciiPaint.view.View;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,50 +21,54 @@ public class Controller {
         this.view = view;
     }
 
- 
-
     /**
      * Se charge d'interpréter les commandes de l'utilisateur.
      */
     public void interprete() {
-        System.out.println("What would you like to draw ? (type help for help)");
-        String command = view.getKb().nextLine();
+        System.out.println("Entrez vos commandes (help affiche la liste des commandes)");
+        String command = view.ask();
         while (!"quit".equals(command)) {
-            switch (command) {
+            try {
+                pause();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            StringTokenizer tokens = new StringTokenizer(command);
+            switch (tokens.nextToken()) {
                 case "help":
                     view.help();
-                    command = view.getKb().nextLine();
+                    command = view.ask();
                     break;
                 case "show":
                     view.asAscii(paint.getDrawing());
-                    command = view.getKb().nextLine();
+                    command = view.ask();
                     break;
                 case "list":
                     System.out.println(paint.getDrawing().toString());
-                    command = view.getKb().nextLine();
+                    command = view.ask();
                     break;
                 case "load":
                     load();
-                    command = view.getKb().nextLine();
+                    command = view.ask();
                     break;
                 case "eof":
                     view.reset();
-                    command = view.getKb().nextLine();
+                    command = view.ask();
                     break;
 
-//                case "pause":
-//                    pause = Integer.parseInt(elements[1]);
-//                    break;
+                case "pause":
+                    pause = Integer.parseInt(tokens.nextToken());
+                    command = view.ask();
+                    break;
+
                 default:
                     verify(command);
-                    command = view.getKb().nextLine();
+                    command = view.ask();
                     break;
             }
         }
         System.exit(0);
     }
-
-    
 
     /**
      * Vérifie que la commande entrée pour créer une forme soit sous la bonne

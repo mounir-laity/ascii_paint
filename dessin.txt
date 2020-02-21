@@ -1,3 +1,5 @@
 add square 12 12 4 f
 show
+add rectangle 2 4 3 5 m
+show
 eof

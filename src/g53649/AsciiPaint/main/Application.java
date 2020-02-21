@@ -13,7 +13,7 @@ public class Application {
     private final Controller controller;
 
     public Application() {
-        AsciiPaint ascii = new AsciiPaint(30, 30);
+        AsciiPaint ascii = new AsciiPaint(20, 20);
         View view = new View();
         this.controller = new Controller(ascii, view);
     }
