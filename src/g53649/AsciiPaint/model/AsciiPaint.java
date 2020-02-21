@@ -34,6 +34,7 @@ public class AsciiPaint {
      */
     public void newCircle(int x, int y, int radius, char color) {
         Command add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
+        add.execute();
         stack.add(add);
     }
 
@@ -86,20 +87,5 @@ public class AsciiPaint {
         return drawing;
     }
 
-    /**
-     * Permet de représenter sur l'output les différentes formes ajoutées par
-     * l'utilisateur.
-     */
-    public void asAscii() {
-        for (int i = 0; i < drawing.getWidth(); i++) {
-            for (int j = 0; j < drawing.getHeight(); j++) {
-                if (drawing.getShapeAt(new Point(i, j)) == null) {
-                    System.out.print(" ");
-                } else {
-                    System.out.print(drawing.getShapeAt(new Point(i, j)).getColor());
-                }
-            }
-            System.out.print("\n");
-        }
-    }
+    
 }

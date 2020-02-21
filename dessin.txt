@@ -1,0 +1,3 @@
+add square 12 12 4 f
+show
+eof

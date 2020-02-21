@@ -2,12 +2,7 @@ package g53649.AsciiPaint.controller;
 
 import g53649.AsciiPaint.model.AsciiPaint;
 import g53649.AsciiPaint.view.View;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,29 +25,29 @@ public class Controller {
      * Se charge d'interpréter les commandes de l'utilisateur.
      */
     public void interprete() {
-        Scanner kb = new Scanner(System.in);
         System.out.println("What would you like to draw ? (type help for help)");
-        String command = kb.nextLine();
+        String command = view.getKb().nextLine();
         while (!"quit".equals(command)) {
             switch (command) {
                 case "help":
-                    help();
-                    command = kb.nextLine();
+                    view.help();
+                    command = view.getKb().nextLine();
                     break;
                 case "show":
-                    paint.asAscii();
-                    command = kb.nextLine();
+                    view.asAscii(paint.getDrawing());
+                    command = view.getKb().nextLine();
                     break;
                 case "list":
                     System.out.println(paint.getDrawing().toString());
-                    command = kb.nextLine();
+                    command = view.getKb().nextLine();
                     break;
                 case "load":
                     load();
+                    command = view.getKb().nextLine();
                     break;
                 case "eof":
                     view.reset();
-                    command = kb.nextLine();
+                    command = view.getKb().nextLine();
                     break;
 
 //                case "pause":
@@ -60,26 +55,14 @@ public class Controller {
 //                    break;
                 default:
                     verify(command);
-                    command = kb.nextLine();
+                    command = view.getKb().nextLine();
                     break;
             }
         }
         System.exit(0);
     }
 
-    /**
-     * Indique à l'utilisateur quelles sont les commandes possibles.
-     */
-    public void help() {
-        System.out.println("Here's the list of all other possible commands : ");
-        System.out.println("add circle x y radius color");
-        System.out.println("add rectangle x y width height color");
-        System.out.println("add square x y side color");
-        System.out.println("add line x1 y1 x2 y2 color");
-        System.out.println("show");
-        System.out.println("");
-        interprete();
-    }
+    
 
     /**
      * Vérifie que la commande entrée pour créer une forme soit sous la bonne
@@ -104,7 +87,6 @@ public class Controller {
             System.out.println("Incorrect format. Type help for the list of "
                     + "valid commands");
         }
-        interprete();
     }
 
     /**
@@ -178,12 +160,7 @@ public class Controller {
     }
 
     private void load() {
-        try {
-            view.setInput(new FileInputStream("dessin"));
-        } catch (FileNotFoundException ex) {
-            System.err.println("File not found");
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        view.setInput();
     }
 
     public void setPause(int pause) {
