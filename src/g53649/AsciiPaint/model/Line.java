@@ -18,7 +18,7 @@ public class Line extends ColoredShape {
      */
     public Line(Point firstPoint, Point secondPoint, char color) {
         super(color);
-        if(firstPoint.equals(secondPoint)) {
+        if (firstPoint.equals(secondPoint)) {
             throw new IllegalArgumentException("The two points must be different ");
         }
         this.p1 = firstPoint;
@@ -49,4 +49,10 @@ public class Line extends ColoredShape {
         p1 = new Point(p1.getX() + dx, p1.getY() + dy);
         p2 = new Point(p2.getX() + dx, p2.getY() + dy);
     }
+
+    @Override
+    public String toString() {
+        return "Line : (" + p1 + " " + p2 + ')';
+    }
+
 }

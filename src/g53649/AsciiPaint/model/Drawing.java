@@ -74,41 +74,11 @@ public class Drawing {
 
     @Override
     public String toString() {
-        return "Drawing{" + "shapes=" + shapes + ", height=" + height + ", width=" + width + '}';
-    }
-
-    
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.shapes);
-        hash = 53 * hash + this.height;
-        hash = 53 * hash + this.width;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+        String s = "";
+        for (int i = 0; i < shapes.size(); i++) {
+            s += i + " : " + shapes.get(i) + '\n';
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Drawing other = (Drawing) obj;
-        if (this.height != other.height) {
-            return false;
-        }
-        if (this.width != other.width) {
-            return false;
-        }
-        if (!Objects.equals(this.shapes, other.shapes)) {
-            return false;
-        }
-        return true;
+        return s;
     }
 
 }

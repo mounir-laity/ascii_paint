@@ -43,6 +43,10 @@ public class View {
         System.out.println("add square x y side color");
         System.out.println("add line x1 y1 x2 y2 color");
         System.out.println("show");
+        System.out.println("load");
+        System.out.println("pause x");
+        System.out.println("list");
+        System.out.println("quit");
         System.out.println("");
     }
     

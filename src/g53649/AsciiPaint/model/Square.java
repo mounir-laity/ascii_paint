@@ -20,5 +20,5 @@ public class Square extends Rectangle {
             throw new IllegalArgumentException("The side must be positive");
         }
     }
-
+    
 }
