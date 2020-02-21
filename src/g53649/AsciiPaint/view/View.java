@@ -60,7 +60,7 @@ public class View {
                 if (drawing.getShapeAt(new Point(i, j)) == null) {
                     System.out.print(" ");
                 } else {
-                    System.out.print(drawing.getShapeAt(new Point(i, j)).getColor());
+                    System.out.print(drawing.getShapeAt(new Point(i, j)).getColor().toString());
                 }
             }
             System.out.print("\n");

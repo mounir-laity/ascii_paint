@@ -118,7 +118,7 @@ public class Controller {
         paint.newCircle(Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                command.charAt(command.length() - 1));
+                paint.convertToColor(command.charAt(command.length()-1)));
     }
 
     /**
@@ -135,7 +135,7 @@ public class Controller {
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                command.charAt(command.length() - 1));
+                paint.convertToColor(command.charAt(command.length()-1)));
     }
 
     /**
@@ -151,7 +151,7 @@ public class Controller {
         paint.newSquare(Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                command.charAt(command.length() - 1));
+                paint.convertToColor(command.charAt(command.length()-1)));
     }
 
     /**
@@ -168,7 +168,7 @@ public class Controller {
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                command.charAt(command.length() - 1));
+                paint.convertToColor(command.charAt(command.length()-1)));
     }
 
     public void pause() throws InterruptedException {

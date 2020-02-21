@@ -22,5 +22,5 @@ public interface Shape {
      */
     void move(int dx, int dy);
 
-    char getColor();
+    Color getColor();
 }

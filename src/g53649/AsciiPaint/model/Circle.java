@@ -19,7 +19,7 @@ public class Circle extends ColoredShape {
      * @param color la couleur du cercle.
      * @throws IllegalArgumentException si le rayon est négatif.
      */
-    public Circle(Point center, int radius, char color) {
+    public Circle(Point center, int radius, Color color) {
         super(color);
         if (radius < 0) {
             throw new IllegalArgumentException("The radius must be positive");

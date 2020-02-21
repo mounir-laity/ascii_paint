@@ -30,7 +30,7 @@ public class AsciiPaint {
      * @param radius le rayon du cercle.
      * @param color la couleur du cercle.
      */
-    public void newCircle(int x, int y, int radius, char color) {
+    public void newCircle(int x, int y, int radius, Color color) {
         Command add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
         add.execute();
         stack.add(add);
@@ -45,7 +45,7 @@ public class AsciiPaint {
      * @param height la hauteur du rectangle.
      * @param color la couleur du rectangle.
      */
-    public void newRectangle(int x, int y, int width, int height, char color) {
+    public void newRectangle(int x, int y, int width, int height, Color color) {
         Point upperLeft = new Point(x, y);
         Rectangle rectangle = new Rectangle(upperLeft, width, height, color);
         drawing.addShape(rectangle);
@@ -59,7 +59,7 @@ public class AsciiPaint {
      * @param side le côté du carré.
      * @param color la couleur du carré.
      */
-    public void newSquare(int x, int y, int side, char color) {
+    public void newSquare(int x, int y, int side, Color color) {
         Point upperLeft = new Point(x, y);
         Square square = new Square(upperLeft, side, color);
         drawing.addShape(square);
@@ -74,11 +74,31 @@ public class AsciiPaint {
      * @param p2y l'ordonnée du second point de la droite.
      * @param color la couleur de la droite
      */
-    public void newLine(int p1x, int p1y, int p2x, int p2y, char color) {
+    public void newLine(int p1x, int p1y, int p2x, int p2y, Color color) {
         Point p1 = new Point(p1x, p1y);
         Point p2 = new Point(p2x, p2y);
         Line line = new Line(p1, p2, color);
         drawing.addShape(line);
+    }
+    
+    public Color convertToColor(char c) {
+        switch (c) {
+            case 'r':
+                return Color.RED;
+            case 'b':
+                return Color.BLUE;
+            case 'm':
+                return Color.MAGENTA;
+            case 'g':
+                return Color.GREEN;
+            case 'y':
+                return Color.YELLOW;
+            case 'c':
+                return Color.CYAN;
+            default:
+                break;
+        }
+        return Color.BLUE;
     }
 
     public Drawing getDrawing() {
