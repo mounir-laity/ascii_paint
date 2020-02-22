@@ -50,9 +50,14 @@ public class Line extends ColoredShape {
         p2 = new Point(p2.getX() + dx, p2.getY() + dy);
     }
 
+    /**
+     * Converti la ligne en chaine
+     *
+     * @return la chaine correspondante à la ligne
+     */
     @Override
     public String toString() {
-        return "Line : (" + p1 + " " + p2 + ')';
+        return "Line : [" + p1 + " " + p2 + ']';
     }
 
 }

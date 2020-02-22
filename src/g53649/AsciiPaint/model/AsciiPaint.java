@@ -8,8 +8,8 @@ import java.util.Stack;
  */
 public class AsciiPaint {
 
-    private Drawing drawing;
-    private Stack<Command> stack;
+    private final Drawing drawing;
+    private final Stack<Command> stack;
 
     /**
      * Constructeur d'AsciiPaint
@@ -80,7 +80,13 @@ public class AsciiPaint {
         Line line = new Line(p1, p2, color);
         drawing.addShape(line);
     }
-    
+
+    /**
+     * Permet de convertir un caractère en couleur correspondante
+     *
+     * @param c le caractère à convertir
+     * @return la couleur correspondant au caractère entré (bleu par défaut)
+     */
     public Color convertToColor(char c) {
         switch (c) {
             case 'r':
@@ -100,8 +106,12 @@ public class AsciiPaint {
         }
         return Color.BLUE;
     }
-    
 
+    /**
+     * Getter de drawing
+     *
+     * @return le canevas où sont placées les formes
+     */
     public Drawing getDrawing() {
         return drawing;
     }

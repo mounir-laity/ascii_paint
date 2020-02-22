@@ -12,13 +12,15 @@ public class Application {
 
     private final Controller controller;
 
+    /**
+     * Constructeur de l'application
+     */
     public Application() {
         AsciiPaint ascii = new AsciiPaint(20, 20);
         View view = new View();
         this.controller = new Controller(ascii, view);
     }
 
-    
     /**
      * Démarre le programme.
      */
@@ -33,7 +35,7 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
-        
+
         Application app = new Application();
         app.start();
     }

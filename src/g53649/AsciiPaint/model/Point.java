@@ -50,14 +50,29 @@ public class Point {
         return (Math.hypot((other.x - this.x), (other.y - this.y)));
     }
 
+    /**
+     * Getter de la valeur de l'abcisse du point
+     *
+     * @return l'abcisse du point
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Getter de l'ordonnée du point
+     *
+     * @return l'ordonnée du point
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Converti le point en chaine de caractères
+     *
+     * @return la chaine correspondante au point
+     */
     @Override
     public String toString() {
         return "(" + x + ", " + y + ')';

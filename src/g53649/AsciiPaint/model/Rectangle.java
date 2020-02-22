@@ -1,7 +1,5 @@
 package g53649.AsciiPaint.model;
 
-import java.util.Objects;
-
 /**
  *
  * @author laity
@@ -60,9 +58,14 @@ public class Rectangle extends ColoredShape {
         upperLeft = new Point(upperLeft.getX() + dx, upperLeft.getY() + dy);
     }
 
+    /**
+     * Convertit le rectangle en chaine de caractères
+     *
+     * @return la chaine correspondant au rectangle
+     */
     @Override
     public String toString() {
-        return "Rectangle : ("+ upperLeft + " " + width + " " + height + ')';
+        return "Rectangle : [" + upperLeft + " " + width + " " + height + ']';
     }
 
 }

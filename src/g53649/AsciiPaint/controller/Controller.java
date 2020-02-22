@@ -1,7 +1,6 @@
 package g53649.AsciiPaint.controller;
 
 import g53649.AsciiPaint.model.AsciiPaint;
-import g53649.AsciiPaint.model.Color;
 import g53649.AsciiPaint.view.View;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -51,12 +50,12 @@ public class Controller {
                 case "move":
                     paint.getDrawing().move(Integer.parseInt(tokens.nextToken()),
                             Integer.parseInt(tokens.nextToken()),
-                                    Integer.parseInt(tokens.nextToken()));
+                            Integer.parseInt(tokens.nextToken()));
                     command = view.ask();
                     break;
-                    case "color":
+                case "color":
                     paint.getDrawing().changeColor(Integer.parseInt(tokens.nextToken()),
-                            paint.convertToColor(command.charAt(command.length()-1)));
+                            paint.convertToColor(command.charAt(command.length() - 1)));
                     command = view.ask();
                     break;
                 case "load":
@@ -124,7 +123,7 @@ public class Controller {
         paint.newCircle(Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                paint.convertToColor(command.charAt(command.length()-1)));
+                paint.convertToColor(command.charAt(command.length() - 1)));
     }
 
     /**
@@ -141,7 +140,7 @@ public class Controller {
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                paint.convertToColor(command.charAt(command.length()-1)));
+                paint.convertToColor(command.charAt(command.length() - 1)));
     }
 
     /**
@@ -157,7 +156,7 @@ public class Controller {
         paint.newSquare(Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                paint.convertToColor(command.charAt(command.length()-1)));
+                paint.convertToColor(command.charAt(command.length() - 1)));
     }
 
     /**
@@ -174,17 +173,30 @@ public class Controller {
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
                 Integer.parseInt(tokens.nextToken()),
-                paint.convertToColor(command.charAt(command.length()-1)));
+                paint.convertToColor(command.charAt(command.length() - 1)));
     }
 
+    /**
+     * Met en pause le programme après chaque commande
+     *
+     * @throws InterruptedException l'interruption causée par la pause
+     */
     public void pause() throws InterruptedException {
         Thread.sleep(pause);
     }
 
+    /**
+     * Permet d'utiliser un fichier comme entrée pour les commandes
+     */
     private void load() {
         view.setInput();
     }
 
+    /**
+     * Permet de changer la valeur de la pause
+     *
+     * @param pause
+     */
     public void setPause(int pause) {
         this.pause = pause;
     }

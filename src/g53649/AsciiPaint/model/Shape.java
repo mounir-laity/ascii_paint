@@ -22,7 +22,17 @@ public interface Shape {
      */
     void move(int dx, int dy);
 
+    /**
+     * getter de la couleur
+     *
+     * @return la couleur de la forme
+     */
     Color getColor();
 
+    /**
+     * setter de la couleur
+     *
+     * @param color la nouvelle couleur de la forme
+     */
     public void setColor(Color color);
 }

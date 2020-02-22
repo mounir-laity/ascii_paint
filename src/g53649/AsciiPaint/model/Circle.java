@@ -1,7 +1,5 @@
 package g53649.AsciiPaint.model;
 
-import java.util.Objects;
-
 /**
  *
  * @author laity
@@ -54,33 +52,14 @@ public class Circle extends ColoredShape {
         center = new Point(center.getX() + dx, center.getY() + dy);
     }
 
+    /**
+     * Transforme l'objet cercle en chaine de caractères
+     *
+     * @return la chaine correspondant à l'objet
+     */
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(center);
-        hash = 61 * hash + (int) (Double.doubleToLongBits(radius) ^ (Double.doubleToLongBits(this.radius) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Circle other = (Circle) obj;
-        if (Double.doubleToLongBits(radius) != Double.doubleToLongBits(other.radius)) {
-            return false;
-        }
-        if (!Objects.equals(center, other.center)) {
-            return false;
-        }
-        return true;
+    public String toString() {
+        return "Circle : [" + center + " " + radius + ']';
     }
 
 }

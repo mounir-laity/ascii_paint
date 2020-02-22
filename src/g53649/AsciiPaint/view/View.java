@@ -13,9 +13,12 @@ import java.util.logging.Logger;
  * @author laity
  */
 public class View {
-    private Scanner kb = new Scanner(System.in);    
-    
-    
+
+    private Scanner kb = new Scanner(System.in);
+
+    /**
+     * Change l'entrée du clavier vers le fichier dessin.txt en racine du projet
+     */
     public void setInput() {
         try {
             kb = new Scanner(Paths.get("dessin.txt"));
@@ -23,16 +26,24 @@ public class View {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    /**
+     * Réinitialise l'entrée vers le clavier
+     */
     public void reset() {
         kb = new Scanner(System.in);
     }
-    
+
+    /**
+     * Permet à l'utilisateur d'entrer une commande
+     *
+     * @return la commande entrée par l'utilisateur
+     */
     public String ask() {
         String command = kb.nextLine();
         return command;
     }
-    
+
     /**
      * Indique à l'utilisateur quelles sont les commandes possibles.
      */
@@ -46,10 +57,13 @@ public class View {
         System.out.println("load");
         System.out.println("pause x");
         System.out.println("list");
+        System.out.println("move dx dy");
+        System.out.println("color index <color>");
+        System.out.println("remove index");
         System.out.println("quit");
         System.out.println("");
     }
-    
+
     /**
      * Permet de représenter sur l'output les différentes formes ajoutées par
      * l'utilisateur.
@@ -67,9 +81,13 @@ public class View {
         }
     }
 
+    /**
+     * getter du scanner
+     *
+     * @return le scanner
+     */
     public Scanner getKb() {
         return kb;
     }
-    
-    
+
 }

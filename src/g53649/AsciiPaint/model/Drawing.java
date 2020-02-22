@@ -2,7 +2,6 @@ package g53649.AsciiPaint.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  *
@@ -63,27 +62,61 @@ public class Drawing {
         }
         return null;
     }
-    
+
+    /**
+     * Déplace la forme à l'index donné
+     *
+     * @param index l'index de la forme à déplacer
+     * @param dx le décalage horizontal
+     * @param dy le décalage vertical
+     */
     public void move(int index, int dx, int dy) {
         shapes.get(index).move(dx, dy);
     }
-    
+
+    /**
+     * Change la couleur de la forme d'index donné
+     *
+     * @param index l'index de la forme à recolorer
+     * @param color la nouvelle couleur de la forme
+     */
     public void changeColor(int index, Color color) {
         shapes.get(index).setColor(color);
     }
 
+    /**
+     * Getter de la hauteur du canevas
+     *
+     * @return la hauteur du canevas
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Getter de la largeur du canevas
+     *
+     * @return la largeur du canevas
+     */
     public int getWidth() {
         return width;
     }
-    
+
+    /**
+     * Enlève la forme à l'index donné
+     *
+     * @param index l'index de la forme à enlevr
+     */
     public void remove(int index) {
         shapes.remove(index);
     }
 
+    /**
+     * Converti l'ensemble des formes en une chaine qui les numérote selon leur
+     * index
+     *
+     * @return la chaine de la liste de formes converties
+     */
     @Override
     public String toString() {
         String s = "";
