@@ -48,6 +48,11 @@ public class Controller {
                     System.out.println(paint.getDrawing().toString());
                     command = view.ask();
                     break;
+                case "group":
+                    paint.newGroup(Integer.parseInt(tokens.nextToken()),
+                            Integer.parseInt(tokens.nextToken()));
+                    command = view.ask();
+                    break;
                 case "move":
                     paint.move(Integer.parseInt(tokens.nextToken()),
                             Integer.parseInt(tokens.nextToken()),

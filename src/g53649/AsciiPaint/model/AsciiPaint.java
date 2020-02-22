@@ -80,6 +80,15 @@ public class AsciiPaint {
         undostack.push(add);
     }
     
+    public void newGroup(int index1, int index2) {
+        Group group = new Group(drawing.getShapes().get(index1).getColor());
+        group.addShape(drawing.getShapes().get(index1));
+        group.addShape(drawing.getShapes().get(index2));
+        drawing.addShape(group);
+        drawing.getShapes().remove(drawing.getShapes().get(index1));
+        drawing.getShapes().remove(drawing.getShapes().get(index2-1));
+    }
+    
     public void move(int index, int dx, int dy) {
         Command move = new MoveCommand(drawing.getShapes().get(index), dx, dy);
         move.execute();
