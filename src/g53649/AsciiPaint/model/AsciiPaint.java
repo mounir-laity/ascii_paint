@@ -9,7 +9,7 @@ import java.util.Stack;
 public class AsciiPaint {
 
     private final Drawing drawing;
-    private final Stack<Command> stack;
+    private final Stack<Command> undostack;
 
     /**
      * Constructeur d'AsciiPaint
@@ -19,7 +19,7 @@ public class AsciiPaint {
      */
     public AsciiPaint(int width, int height) {
         drawing = new Drawing(width, height);
-        stack = new Stack<>();
+        undostack = new Stack<>();
     }
 
     /**
@@ -33,7 +33,7 @@ public class AsciiPaint {
     public void newCircle(int x, int y, int radius, Color color) {
         Command add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
         add.execute();
-        stack.add(add);
+        undostack.add(add);
     }
 
     /**
@@ -46,9 +46,9 @@ public class AsciiPaint {
      * @param color la couleur du rectangle.
      */
     public void newRectangle(int x, int y, int width, int height, Color color) {
-        Point upperLeft = new Point(x, y);
-        Rectangle rectangle = new Rectangle(upperLeft, width, height, color);
-        drawing.addShape(rectangle);
+        Command add = new AddCommand(drawing, new Rectangle(new Point(x, y), width, height, color));
+        add.execute();
+        undostack.add(add);
     }
 
     /**
@@ -60,9 +60,9 @@ public class AsciiPaint {
      * @param color la couleur du carré.
      */
     public void newSquare(int x, int y, int side, Color color) {
-        Point upperLeft = new Point(x, y);
-        Square square = new Square(upperLeft, side, color);
-        drawing.addShape(square);
+        Command add = new AddCommand(drawing, new Square(new Point(x, y), side, color));
+        add.execute();
+        undostack.add(add);
     }
 
     /**
@@ -75,10 +75,9 @@ public class AsciiPaint {
      * @param color la couleur de la droite
      */
     public void newLine(int p1x, int p1y, int p2x, int p2y, Color color) {
-        Point p1 = new Point(p1x, p1y);
-        Point p2 = new Point(p2x, p2y);
-        Line line = new Line(p1, p2, color);
-        drawing.addShape(line);
+        Command add = new AddCommand(drawing, new Line(new Point(p1x, p1y), new Point(p2x,p2y), color));
+        add.execute();
+        undostack.add(add);
     }
 
     /**

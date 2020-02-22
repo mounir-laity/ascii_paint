@@ -92,21 +92,24 @@ public class Controller {
      * @param command la ligne entrée par l'utilisateur.
      */
     public void verify(String command) {
-        if (command.matches("add circle ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20)"
-                + " ([0-9]|1[0-9]|20) \\w")) {
-            tokenizeCircle(command);
-        } else if (command.matches("add rectangle ([0-9]|1[0-9]|20) "
-                + "([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
-            tokenizeRectangle(command);
-        } else if (command.matches("add square ([0-9]|1[0-9]|20)"
-                + " ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
-            tokenizeSquare(command);
-        } else if (command.matches("add line ([0-9]|1[0-9]|20)"
-                + " ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) ([0-9]|1[0-9]|20) \\w")) {
-            tokenizeLine(command);
-        } else {
-            System.out.println("Incorrect format. Type help for the list of "
-                    + "valid commands");
+        StringTokenizer tokens = new StringTokenizer(command);
+        tokens.nextToken();
+        switch (tokens.nextToken()) {
+            case "circle":
+                tokenizeCircle(command);
+                break;
+            case "rectangle":
+                tokenizeRectangle(command);
+                break;
+            case "square":
+                tokenizeSquare(command);
+                break;
+            case "line":
+                tokenizeLine(command);
+                break;
+            default:
+                System.out.println("Incorrect format. Type help for the list of commands");
+                break;
         }
     }
 

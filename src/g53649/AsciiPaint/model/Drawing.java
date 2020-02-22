@@ -85,6 +85,15 @@ public class Drawing {
     }
 
     /**
+     * Enlève la forme à l'index donné
+     *
+     * @param index l'index de la forme à enlevr
+     */
+    public void remove(int index) {
+        shapes.remove(index);
+    }
+
+    /**
      * Getter de la hauteur du canevas
      *
      * @return la hauteur du canevas
@@ -103,12 +112,11 @@ public class Drawing {
     }
 
     /**
-     * Enlève la forme à l'index donné
-     *
-     * @param index l'index de la forme à enlevr
+     * Getter de la liste de formes
+     * @return la liste de formes
      */
-    public void remove(int index) {
-        shapes.remove(index);
+    public List<Shape> getShapes() {
+        return shapes;
     }
 
     /**
