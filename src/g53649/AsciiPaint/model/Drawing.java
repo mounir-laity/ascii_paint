@@ -92,6 +92,7 @@ public class Drawing {
     public void remove(int index) {
         shapes.remove(index);
     }
+    
 
     /**
      * Getter de la hauteur du canevas

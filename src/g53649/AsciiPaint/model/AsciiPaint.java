@@ -33,7 +33,7 @@ public class AsciiPaint {
     public void newCircle(int x, int y, int radius, Color color) {
         Command add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
         add.execute();
-        undostack.add(add);
+        undostack.push(add);
     }
 
     /**
@@ -48,7 +48,7 @@ public class AsciiPaint {
     public void newRectangle(int x, int y, int width, int height, Color color) {
         Command add = new AddCommand(drawing, new Rectangle(new Point(x, y), width, height, color));
         add.execute();
-        undostack.add(add);
+        undostack.push(add);
     }
 
     /**
@@ -62,7 +62,7 @@ public class AsciiPaint {
     public void newSquare(int x, int y, int side, Color color) {
         Command add = new AddCommand(drawing, new Square(new Point(x, y), side, color));
         add.execute();
-        undostack.add(add);
+        undostack.push(add);
     }
 
     /**
@@ -77,7 +77,13 @@ public class AsciiPaint {
     public void newLine(int p1x, int p1y, int p2x, int p2y, Color color) {
         Command add = new AddCommand(drawing, new Line(new Point(p1x, p1y), new Point(p2x,p2y), color));
         add.execute();
-        undostack.add(add);
+        undostack.push(add);
+    }
+    
+    public void move(int index, int dx, int dy) {
+        Command move = new MoveCommand(drawing.getShapes().get(index), dx, dy);
+        move.execute();
+        undostack.push(move);
     }
 
     /**
@@ -104,6 +110,11 @@ public class AsciiPaint {
                 break;
         }
         return Color.BLUE;
+    }
+    
+    //////////////////////////////////////////////
+    public void undo() {
+        undostack.pop().unexecute();
     }
 
     /**

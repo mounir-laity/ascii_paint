@@ -14,5 +14,5 @@ public interface Command {
     /**
      * Annule la commande
      */
-    void undo();
+    void unexecute();
 }

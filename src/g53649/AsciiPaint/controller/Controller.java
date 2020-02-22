@@ -48,9 +48,9 @@ public class Controller {
                     command = view.ask();
                     break;
                 case "move":
-                    paint.getDrawing().move(Integer.parseInt(tokens.nextToken()),
+                    paint.move(Integer.parseInt(tokens.nextToken()),
                             Integer.parseInt(tokens.nextToken()),
-                            Integer.parseInt(tokens.nextToken()));
+                                    Integer.parseInt(tokens.nextToken()));
                     command = view.ask();
                     break;
                 case "color":
@@ -75,7 +75,10 @@ public class Controller {
                     pause = Integer.parseInt(tokens.nextToken());
                     command = view.ask();
                     break;
-
+                case "undo":
+                    paint.undo();
+                    command = view.ask();
+                    break;
                 default:
                     verify(command);
                     command = view.ask();

@@ -26,7 +26,7 @@ public class AddCommand implements Command {
     }
 
     @Override
-    public void undo() {
+    public void unexecute() {
         drawing.remove(drawing.getShapes().size()-1);
     }
 

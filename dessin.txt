@@ -2,13 +2,8 @@ add square 8 8 4 r
 show
 move 0 5 5
 show
-color 0 b
+undo
 show
-color 0 g
+undo
 show
-add circle 8 8 4 m
-show
-remove 0
-show
-list
 eof
