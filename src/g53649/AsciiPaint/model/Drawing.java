@@ -67,6 +67,10 @@ public class Drawing {
     public void move(int index, int dx, int dy) {
         shapes.get(index).move(dx, dy);
     }
+    
+    public void changeColor(int index, Color color) {
+        shapes.get(index).setColor(color);
+    }
 
     public int getHeight() {
         return height;

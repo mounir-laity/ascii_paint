@@ -22,4 +22,9 @@ public abstract class ColoredShape implements Shape {
         return color;
     }
 
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
 }

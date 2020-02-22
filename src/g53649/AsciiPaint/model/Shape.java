@@ -23,4 +23,6 @@ public interface Shape {
     void move(int dx, int dy);
 
     Color getColor();
+
+    public void setColor(Color color);
 }

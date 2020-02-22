@@ -100,6 +100,7 @@ public class AsciiPaint {
         }
         return Color.BLUE;
     }
+    
 
     public Drawing getDrawing() {
         return drawing;
