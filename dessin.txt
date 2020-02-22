@@ -2,6 +2,12 @@ add square 8 8 4 r
 show
 move 0 5 5
 show
+add circle 10 10 2 g
+show
+group 0 1
+show
+move 0 -7 -7
+show
 undo
 show
 undo

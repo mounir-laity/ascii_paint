@@ -54,6 +54,12 @@ public class Group extends ColoredShape{
         s += " }";
         return s;
     }
+
+    public List<Shape> getShapes() {
+        return shapes;
+    }
+    
+    
     
     
 }
