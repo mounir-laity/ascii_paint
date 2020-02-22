@@ -1,6 +1,7 @@
 package g53649.AsciiPaint.controller;
 
 import g53649.AsciiPaint.model.AsciiPaint;
+import g53649.AsciiPaint.model.Color;
 import g53649.AsciiPaint.view.View;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -54,8 +55,8 @@ public class Controller {
                     command = view.ask();
                     break;
                 case "color":
-                    paint.getDrawing().changeColor(Integer.parseInt(tokens.nextToken()),
-                            paint.convertToColor(command.charAt(command.length() - 1)));
+                    paint.color(Integer.parseInt(tokens.nextToken()),
+                            paint.convertToColor(command.charAt(command.length()-1)));
                     command = view.ask();
                     break;
                 case "load":

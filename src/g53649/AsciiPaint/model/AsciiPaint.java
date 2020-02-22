@@ -85,6 +85,12 @@ public class AsciiPaint {
         move.execute();
         undostack.push(move);
     }
+    
+    public void color(int index, Color color) {
+        Command changeColor = new ColorCommand(drawing.getShapes().get(index), color);
+        changeColor.execute();
+        undostack.push(changeColor);
+    }
 
     /**
      * Permet de convertir un caractère en couleur correspondante
@@ -109,7 +115,7 @@ public class AsciiPaint {
             default:
                 break;
         }
-        return Color.BLUE;
+        return Color.DEFAULT;
     }
     
     //////////////////////////////////////////////
