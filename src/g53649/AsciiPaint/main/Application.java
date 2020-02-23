@@ -15,7 +15,7 @@ public class Application {
     /**
      * Constructeur de l'application
      */
-    public Application() {
+    private Application() {
         AsciiPaint ascii = new AsciiPaint(20, 20);
         View view = new View();
         this.controller = new Controller(ascii, view);
@@ -24,7 +24,7 @@ public class Application {
     /**
      * Démarre le programme.
      */
-    public void start() {
+    private void start() {
         controller.interprete();
     }
 

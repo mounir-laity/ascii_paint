@@ -14,7 +14,7 @@ public class Square extends Rectangle {
      * @param color la couleur du carré.
      * @throws IllegalArgumentException si le côté est négatif.
      */
-    public Square(Point upperLeft, int side, Color color) {
+     Square(Point upperLeft, int side, Color color) {
         super(upperLeft, side, side, color);
         if (side < 0) {
             throw new IllegalArgumentException("The side must be positive");

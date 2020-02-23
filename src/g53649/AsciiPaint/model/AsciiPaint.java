@@ -10,6 +10,7 @@ public class AsciiPaint {
 
     private final Drawing drawing;
     private final Stack<Command> undostack;
+    private final Stack<Command> redostack;
 
     /**
      * Constructeur d'AsciiPaint
@@ -20,6 +21,7 @@ public class AsciiPaint {
     public AsciiPaint(int width, int height) {
         drawing = new Drawing(width, height);
         undostack = new Stack<>();
+        redostack = new Stack<>();
     }
 
     /**
@@ -75,23 +77,42 @@ public class AsciiPaint {
      * @param color la couleur de la droite
      */
     public void newLine(int p1x, int p1y, int p2x, int p2y, Color color) {
-        Command add = new AddCommand(drawing, new Line(new Point(p1x, p1y), new Point(p2x,p2y), color));
+        Command add = new AddCommand(drawing, new Line(new Point(p1x, p1y), new Point(p2x, p2y), color));
         add.execute();
         undostack.push(add);
     }
-    
+
+    /**
+     * Crée un nouveau groupe de formes
+     *
+     * @param index1 l'index de la première forme du groupe
+     * @param index2 l'index de la seconde forme du groupe
+     */
     public void newGroup(int index1, int index2) {
         GroupCommand group = new GroupCommand(drawing, index1, index2);
         group.execute();
         undostack.push(group);
     }
-    
+
+    /**
+     * Déplace une forme d'indice donné selon les décalages donnés
+     *
+     * @param index l'index de la forme à déplacer
+     * @param dx le décalage horizontal
+     * @param dy le décalage vertical
+     */
     public void move(int index, int dx, int dy) {
         Command move = new MoveCommand(drawing.getShapes().get(index), dx, dy);
         move.execute();
         undostack.push(move);
     }
-    
+
+    /**
+     * Colorie une forme
+     *
+     * @param index l'index de la forme à colorier
+     * @param color la nouvelle couleur de la forme
+     */
     public void color(int index, Color color) {
         Command changeColor = new ColorCommand(drawing.getShapes().get(index), color);
         changeColor.execute();
@@ -123,10 +144,28 @@ public class AsciiPaint {
         }
         return Color.DEFAULT;
     }
-    
-    //////////////////////////////////////////////
+
+    /**
+     * Annule la dernière commande entrée par l'utilisateur
+     */
     public void undo() {
-        undostack.pop().unexecute();
+        if (undostack.isEmpty()) {
+            System.out.println("No action to undo");
+        } else {
+            undostack.peek().unexecute();
+            redostack.push(undostack.pop());
+        }
+    }
+
+    /**
+     * Refait la dernière commande annulée
+     */
+    public void redo() {
+        if (redostack.isEmpty()) {
+            System.out.println("No action to redo");
+        }
+        redostack.peek().execute();
+        undostack.push(redostack.pop());
     }
 
     /**

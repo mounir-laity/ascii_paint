@@ -6,14 +6,14 @@ package g53649.AsciiPaint.model;
  */
 public abstract class ColoredShape implements Shape {
 
-    private Color color;
+    protected Color color;
 
     /**
      * Constructeur de ColoredShape
      *
      * @param color la couleur de la forme.
      */
-    public ColoredShape(Color color) {
+     ColoredShape(Color color) {
         this.color = color;
     }
 
@@ -22,6 +22,7 @@ public abstract class ColoredShape implements Shape {
      *
      * @return la couleur de la forme
      */
+    @Override
     public Color getColor() {
         return color;
     }

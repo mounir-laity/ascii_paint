@@ -12,4 +12,6 @@ undo
 show
 undo
 show
+redo
+show
 eof

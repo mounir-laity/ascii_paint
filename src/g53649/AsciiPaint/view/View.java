@@ -67,6 +67,8 @@ public class View {
     /**
      * Permet de représenter sur l'output les différentes formes ajoutées par
      * l'utilisateur.
+     *
+     * @param drawing le canevas à remplir
      */
     public void asAscii(Drawing drawing) {
         for (int i = 0; i < drawing.getWidth(); i++) {
@@ -86,7 +88,7 @@ public class View {
      *
      * @return le scanner
      */
-    public Scanner getKb() {
+    Scanner getKb() {
         return kb;
     }
 

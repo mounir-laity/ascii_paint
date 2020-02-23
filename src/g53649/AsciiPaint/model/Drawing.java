@@ -21,7 +21,7 @@ public class Drawing {
      * @throws IllegalArgumentException si au moins un des paramètres est
      * négatif.
      */
-    public Drawing(int height, int width) {
+    Drawing(int height, int width) {
         if (height < 0 || width < 0) {
             throw new IllegalArgumentException("The height and width must be positive");
         }
@@ -36,7 +36,7 @@ public class Drawing {
      * @param shape la forme à ajouter.
      * @throws NullPointerException si la forme est null.
      */
-    public void addShape(Shape shape) {
+    void addShape(Shape shape) {
         if (shape == null) {
             throw new NullPointerException("The shape cannot be null");
         }
@@ -70,7 +70,7 @@ public class Drawing {
      * @param dx le décalage horizontal
      * @param dy le décalage vertical
      */
-    public void move(int index, int dx, int dy) {
+    void move(int index, int dx, int dy) {
         shapes.get(index).move(dx, dy);
     }
 
@@ -80,7 +80,7 @@ public class Drawing {
      * @param index l'index de la forme à recolorer
      * @param color la nouvelle couleur de la forme
      */
-    public void changeColor(int index, Color color) {
+    void changeColor(int index, Color color) {
         shapes.get(index).setColor(color);
     }
 
@@ -92,7 +92,6 @@ public class Drawing {
     public void remove(int index) {
         shapes.remove(index);
     }
-    
 
     /**
      * Getter de la hauteur du canevas
@@ -114,9 +113,10 @@ public class Drawing {
 
     /**
      * Getter de la liste de formes
+     *
      * @return la liste de formes
      */
-    public List<Shape> getShapes() {
+    List<Shape> getShapes() {
         return shapes;
     }
 

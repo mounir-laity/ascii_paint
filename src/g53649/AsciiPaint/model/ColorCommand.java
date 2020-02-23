@@ -4,13 +4,13 @@ package g53649.AsciiPaint.model;
  *
  * @author laity
  */
-public class ColorCommand implements Command{
+public class ColorCommand implements Command {
 
-    private Shape shape;
-    private Color oldColor;
-    private Color newColor;
+    private final Shape shape;
+    private final Color oldColor;
+    private final Color newColor;
 
-    public ColorCommand(Shape shape, Color newColor) {
+    ColorCommand(Shape shape, Color newColor) {
         this.shape = shape;
         this.oldColor = shape.getColor();
         this.newColor = newColor;
@@ -20,7 +20,7 @@ public class ColorCommand implements Command{
     public void execute() {
         shape.setColor(newColor);
     }
-    
+
     @Override
     public void unexecute() {
         shape.setColor(oldColor);

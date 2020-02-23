@@ -35,7 +35,7 @@ public class Point {
      * @param dx le décalage horizontal.
      * @param dy le décalage vertical.
      */
-    public void move(int dx, int dy) {
+    void move(int dx, int dy) {
         x += dx;
         y += dy;
     }
@@ -46,7 +46,7 @@ public class Point {
      * @param other le point par rapport auquel on cherche la distance.
      * @return la distance entre les deux points.
      */
-    public double distanceTo(Point other) {
+    double distanceTo(Point other) {
         return (Math.hypot((other.x - this.x), (other.y - this.y)));
     }
 
@@ -55,7 +55,7 @@ public class Point {
      *
      * @return l'abcisse du point
      */
-    public int getX() {
+    int getX() {
         return x;
     }
 
@@ -64,7 +64,7 @@ public class Point {
      *
      * @return l'ordonnée du point
      */
-    public int getY() {
+    int getY() {
         return y;
     }
 

@@ -1,7 +1,6 @@
 package g53649.AsciiPaint.controller;
 
 import g53649.AsciiPaint.model.AsciiPaint;
-import g53649.AsciiPaint.model.Color;
 import g53649.AsciiPaint.view.View;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -56,12 +55,12 @@ public class Controller {
                 case "move":
                     paint.move(Integer.parseInt(tokens.nextToken()),
                             Integer.parseInt(tokens.nextToken()),
-                                    Integer.parseInt(tokens.nextToken()));
+                            Integer.parseInt(tokens.nextToken()));
                     command = view.ask();
                     break;
                 case "color":
                     paint.color(Integer.parseInt(tokens.nextToken()),
-                            paint.convertToColor(command.charAt(command.length()-1)));
+                            paint.convertToColor(command.charAt(command.length() - 1)));
                     command = view.ask();
                     break;
                 case "load":
@@ -85,6 +84,10 @@ public class Controller {
                     paint.undo();
                     command = view.ask();
                     break;
+                case "redo":
+                    paint.redo();
+                    command = view.ask();
+                    break;
                 default:
                     verify(command);
                     command = view.ask();
@@ -100,7 +103,7 @@ public class Controller {
      *
      * @param command la ligne entrée par l'utilisateur.
      */
-    public void verify(String command) {
+    private void verify(String command) {
         StringTokenizer tokens = new StringTokenizer(command);
         tokens.nextToken();
         switch (tokens.nextToken()) {
@@ -128,7 +131,7 @@ public class Controller {
      *
      * @param command la commande donnée par l'utilisateur.
      */
-    public void tokenizeCircle(String command) {
+    private void tokenizeCircle(String command) {
         StringTokenizer tokens = new StringTokenizer(command);
         tokens.nextToken();
         tokens.nextToken();
@@ -144,7 +147,7 @@ public class Controller {
      *
      * @param command la commande donnée par l'utilisateur.
      */
-    public void tokenizeRectangle(String command) {
+    private void tokenizeRectangle(String command) {
         StringTokenizer tokens = new StringTokenizer(command);
         tokens.nextToken();
         tokens.nextToken();
@@ -161,7 +164,7 @@ public class Controller {
      *
      * @param command la commande donnée par l'utilisateur.
      */
-    public void tokenizeSquare(String command) {
+    private void tokenizeSquare(String command) {
         StringTokenizer tokens = new StringTokenizer(command);
         tokens.nextToken();
         tokens.nextToken();
@@ -177,7 +180,7 @@ public class Controller {
      *
      * @param command la commande donnée par l'utilisateur.
      */
-    public void tokenizeLine(String command) {
+    private void tokenizeLine(String command) {
         StringTokenizer tokens = new StringTokenizer(command);
         tokens.nextToken();
         tokens.nextToken();
@@ -193,7 +196,7 @@ public class Controller {
      *
      * @throws InterruptedException l'interruption causée par la pause
      */
-    public void pause() throws InterruptedException {
+    private void pause() throws InterruptedException {
         Thread.sleep(pause);
     }
 
@@ -202,14 +205,5 @@ public class Controller {
      */
     private void load() {
         view.setInput();
-    }
-
-    /**
-     * Permet de changer la valeur de la pause
-     *
-     * @param pause
-     */
-    public void setPause(int pause) {
-        this.pause = pause;
     }
 }

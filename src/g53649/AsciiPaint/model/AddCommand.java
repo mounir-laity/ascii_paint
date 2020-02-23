@@ -6,8 +6,8 @@ package g53649.AsciiPaint.model;
  */
 public class AddCommand implements Command {
 
-    private Drawing drawing;
-    private Shape shape;
+    private final Drawing drawing;
+    private final Shape shape;
 
     /**
      * Constructeur de AddCommand
@@ -15,19 +15,25 @@ public class AddCommand implements Command {
      * @param drawing
      * @param shape
      */
-    public AddCommand(Drawing drawing, Shape shape) {
+    AddCommand(Drawing drawing, Shape shape) {
         this.drawing = drawing;
         this.shape = shape;
     }
 
+    /**
+     * Ajoute une forme au canevas
+     */
     @Override
     public void execute() {
         drawing.addShape(shape);
     }
 
+    /**
+     * Enlève une forme du canevas
+     */
     @Override
     public void unexecute() {
-        drawing.remove(drawing.getShapes().size()-1);
+        drawing.remove(drawing.getShapes().size() - 1);
     }
 
 }

@@ -20,7 +20,7 @@ public class Rectangle extends ColoredShape {
      * @throws IllegalArgumentException si la hauteur ou la largeur est
      * négative.
      */
-    public Rectangle(Point upperLeft, int width, int height, Color color) {
+     Rectangle(Point upperLeft, int width, int height, Color color) {
         super(color);
         if (width < 0 || height < 0) {
             throw new IllegalArgumentException("The width and height must be positive");
@@ -65,7 +65,7 @@ public class Rectangle extends ColoredShape {
      */
     @Override
     public String toString() {
-        return "Rectangle : [" + upperLeft + " " + width + " " + height + ']';
+        return "Rectangle : [" + upperLeft + " " + width + " " + height +" " +color+']';
     }
 
 }
