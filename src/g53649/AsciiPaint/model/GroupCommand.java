@@ -19,6 +19,9 @@ public class GroupCommand implements Command {
      * @param index2 l'index de la seconde forme à grouper
      */
     GroupCommand(Drawing drawing, int index1, int index2) {
+        if(index1 == index2) {
+            throw new IllegalArgumentException("The two index must be different");
+        }
         this.drawing = drawing;
         this.group = new Group(drawing.getShapes().get(index1).getColor());
         this.index1 = index1;
