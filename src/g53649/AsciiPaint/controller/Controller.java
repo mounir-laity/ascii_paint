@@ -64,7 +64,7 @@ public class Controller {
                     command = view.ask();
                     break;
                 case "load":
-                    load();
+                    load(tokens.nextToken());
                     command = view.ask();
                     break;
                 case "remove":
@@ -203,7 +203,7 @@ public class Controller {
     /**
      * Permet d'utiliser un fichier comme entrée pour les commandes
      */
-    private void load() {
-        view.setInput();
+    private void load(String file) {
+        view.setInput(file);
     }
 }

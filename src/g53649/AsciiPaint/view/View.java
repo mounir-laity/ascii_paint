@@ -19,9 +19,9 @@ public class View {
     /**
      * Change l'entrée du clavier vers le fichier dessin.txt en racine du projet
      */
-    public void setInput() {
+    public void setInput(String file) {
         try {
-            kb = new Scanner(Paths.get("dessin.txt"));
+            kb = new Scanner(Paths.get(file));
         } catch (IOException ex) {
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
         }
