@@ -53,13 +53,17 @@ public class View {
         System.out.println("add rectangle x y width height color");
         System.out.println("add square x y side color");
         System.out.println("add line x1 y1 x2 y2 color");
-        System.out.println("show");
-        System.out.println("load");
-        System.out.println("pause x");
-        System.out.println("list");
-        System.out.println("move dx dy");
         System.out.println("color index <color>");
+        System.out.println("group index1 index2");
+        System.out.println("help");
+        System.out.println("list");
+        System.out.println("load");
+        System.out.println("move dx dy");
+        System.out.println("pause x");
         System.out.println("remove index");
+        System.out.println("show");
+        System.out.println("undo");
+        System.out.println("redo");
         System.out.println("quit");
         System.out.println("");
     }
