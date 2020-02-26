@@ -22,7 +22,7 @@ public class Drawing {
      * négatif.
      */
     Drawing(int height, int width) {
-        if (height < 0 || width < 0) {
+        if (height <= 0 || width <= 0) {
             throw new IllegalArgumentException("The height and width must be positive");
         }
         this.height = height;
@@ -71,7 +71,11 @@ public class Drawing {
      * @param dy le décalage vertical
      */
     void move(int index, int dx, int dy) {
-        shapes.get(index).move(dx, dy);
+        if (index > shapes.size()) {
+            System.out.println("There is no shape at this index");
+        } else {
+            shapes.get(index).move(dx, dy);
+        }
     }
 
     /**
@@ -90,6 +94,9 @@ public class Drawing {
      * @param index l'index de la forme à enlevr
      */
     public void remove(int index) {
+        if(shapes.isEmpty()) {
+            System.out.println("The index does not correspond to a shape");
+        }
         shapes.remove(index);
     }
 
