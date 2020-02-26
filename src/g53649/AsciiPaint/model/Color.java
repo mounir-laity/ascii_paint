@@ -6,10 +6,10 @@ package g53649.AsciiPaint.model;
  * @author laity
  */
 public enum Color {
-    RED("\033[0;31m" + 'r' + "\033[0m"), BLUE("\033[0;34m" + 'b' + "\033[0m"),
-    GREEN("\033[0;32m" + 'g' + "\033[0m"), YELLOW("\033[0;33m" + 'y' + "\033[0m"),
-    CYAN("\033[0;36m" + 'c' + "\033[0m"), MAGENTA("\033[0;35m" + 'm' + "\033[0m"),
-    DEFAULT("\u001B[30m" + 'o' + "\033[0m");
+    RED("\u001B[41m" + " " + "\033[0m"), BLUE("\033[0;44m" + ' ' + "\033[0m"),
+    GREEN("\033[0;42m" + ' ' + "\033[0m"), YELLOW("\033[0;43m" + ' ' + "\033[0m"),
+    CYAN("\033[0;46m" + ' ' + "\033[0m"), MAGENTA("\033[0;45m" + ' ' + "\033[0m"),
+    DEFAULT("\u001B[30m" + ' ' + "\033[0m");
 
     private final String code;
 
