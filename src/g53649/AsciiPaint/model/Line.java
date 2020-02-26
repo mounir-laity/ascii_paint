@@ -1,5 +1,7 @@
 package g53649.AsciiPaint.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author laity
@@ -35,7 +37,7 @@ public class Line extends ColoredShape {
     public boolean isInside(Point p) {
         int i = (p1.getY() - p2.getY()) * p.getX() + (p2.getX() - p1.getX()) * p.getY()
                 + p1.getX() * p2.getY() - p2.getX() * p1.getY();
-        return i > -1 && i < 1;
+        return i > -5 && i < 5;
     }
 
     /**
@@ -59,5 +61,36 @@ public class Line extends ColoredShape {
     public String toString() {
         return "Line : [" + p1 + " " + p2 + " " + color + ']';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.p1);
+        hash = 29 * hash + Objects.hashCode(this.p2);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Line other = (Line) obj;
+        if (!Objects.equals(this.p1, other.p1)) {
+            return false;
+        }
+        if (!Objects.equals(this.p2, other.p2)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

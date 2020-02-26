@@ -13,7 +13,7 @@ public abstract class ColoredShape implements Shape {
      *
      * @param color la couleur de la forme.
      */
-     ColoredShape(Color color) {
+    ColoredShape(Color color) {
         this.color = color;
     }
 

@@ -24,7 +24,7 @@ public class Rectangle extends ColoredShape {
      */
      Rectangle(Point upperLeft, int width, int height, Color color) {
         super(color);
-        if (width < 0 || height < 0) {
+        if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException("The width and height must be positive");
         }
         this.upperLeft = new Point(upperLeft);

@@ -30,7 +30,7 @@ public class GroupTest {
         assertTrue(group.getShapes().contains(square) && group.getShapes().contains(rectangle)
                 && group.getShapes().size() == 2);
     }
-    
+
     /**
      * Test of addShape method, of class Group.
      */
@@ -61,11 +61,11 @@ public class GroupTest {
         group.addShape(circle);
         group.addShape(rectangle);
         group.move(dx, dy);
-        assertTrue(group.getShapes().get(0).equals(circle2) &&
-               group.getShapes().get(1).equals(rectangle2) &&
-                group.getShapes().size() == 2);
+        assertTrue(group.getShapes().get(0).equals(circle2)
+                && group.getShapes().get(1).equals(rectangle2)
+                && group.getShapes().size() == 2);
     }
-    
+
     /**
      * Test of move method, of class Group.
      */
@@ -81,11 +81,11 @@ public class GroupTest {
         group.addShape(circle);
         group.addShape(rectangle);
         group.move(dx, dy);
-        assertTrue(group.getShapes().get(0).equals(circle2) &&
-               group.getShapes().get(1).equals(rectangle2) &&
-                group.getShapes().size() == 2);
+        assertTrue(group.getShapes().get(0).equals(circle2)
+                && group.getShapes().get(1).equals(rectangle2)
+                && group.getShapes().size() == 2);
     }
-    
+
     /**
      * Test of move method, of class Group.
      */
@@ -101,11 +101,11 @@ public class GroupTest {
         group.addShape(circle);
         group.addShape(rectangle);
         group.move(dx, dy);
-        assertTrue(group.getShapes().get(0).equals(circle2) &&
-               group.getShapes().get(1).equals(rectangle2) &&
-                group.getShapes().size() == 2);
+        assertTrue(group.getShapes().get(0).equals(circle2)
+                && group.getShapes().get(1).equals(rectangle2)
+                && group.getShapes().size() == 2);
     }
-    
+
     /**
      * Test of move method, of class Group.
      */
@@ -121,9 +121,9 @@ public class GroupTest {
         group.addShape(circle);
         group.addShape(rectangle);
         group.move(dx, dy);
-        assertTrue(group.getShapes().get(0).equals(circle2) &&
-               group.getShapes().get(1).equals(rectangle2) &&
-                group.getShapes().size() == 2);
+        assertTrue(group.getShapes().get(0).equals(circle2)
+                && group.getShapes().get(1).equals(rectangle2)
+                && group.getShapes().size() == 2);
     }
 
     /**
@@ -131,7 +131,7 @@ public class GroupTest {
      */
     @Test
     public void testIsInsideWhenInside() {
-        Point p = new Point(5,5);
+        Point p = new Point(5, 5);
         Circle circle = new Circle(new Point(3, 3), 3, Color.BLUE);
         Rectangle rectangle = new Rectangle(new Point(10, 10), 4, 3, Color.BLUE);
         Group group = new Group(Color.BLUE);
@@ -147,7 +147,7 @@ public class GroupTest {
      */
     @Test
     public void testIsInsideWhenNotInside() {
-        Point p = new Point(5,5);
+        Point p = new Point(5, 5);
         Circle circle = new Circle(new Point(3, 3), 2, Color.BLUE);
         Rectangle rectangle = new Rectangle(new Point(10, 10), 4, 3, Color.BLUE);
         Group group = new Group(Color.BLUE);

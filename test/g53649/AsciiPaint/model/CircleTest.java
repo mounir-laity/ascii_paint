@@ -28,7 +28,7 @@ public class CircleTest {
         Circle circle = new Circle(new Point(5, 5), -3, Color.BLUE);
 
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void ConstructCircleWhenRadiusIsZero() {
         Circle circle = new Circle(new Point(5, 5), 0, Color.BLUE);
