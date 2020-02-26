@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;g53649_AsciiPaint&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">g53649.AsciiPaint.controller</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">package g53649.AsciiPaint.controller;
+
+import g53649.AsciiPaint.model.AsciiPaint;
+import g53649.AsciiPaint.view.View;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author laity
+ */
+public class Controller {
+
+    private final AsciiPaint paint;
+    private final View view;
+<span class="fc" id="L17">    private int pause = 0;</span>
+
+<span class="fc" id="L19">    public Controller(AsciiPaint paint, View view) {</span>
+<span class="fc" id="L20">        this.paint = paint;</span>
+<span class="fc" id="L21">        this.view = view;</span>
+<span class="fc" id="L22">    }</span>
+
+    /**
+     * Se charge d'interpréter les commandes de l'utilisateur.
+     */
+    public void interprete() {
+<span class="fc" id="L28">        System.out.println(&quot;Entrez vos commandes (help affiche la liste des commandes)&quot;);</span>
+<span class="fc" id="L29">        String command = view.ask();</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        while (!&quot;quit&quot;.equals(command)) {</span>
+            try {
+<span class="fc" id="L32">                pause();</span>
+<span class="nc" id="L33">            } catch (InterruptedException ex) {</span>
+<span class="nc" id="L34">                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="fc" id="L35">            }</span>
+<span class="fc" id="L36">            StringTokenizer tokens = new StringTokenizer(command);</span>
+<span class="pc bpc" id="L37" title="25 of 50 branches missed.">            switch (tokens.nextToken()) {</span>
+                case &quot;help&quot;:
+<span class="nc" id="L39">                    view.help();</span>
+<span class="nc" id="L40">                    command = view.ask();</span>
+<span class="nc" id="L41">                    break;</span>
+                case &quot;show&quot;:
+<span class="fc" id="L43">                    view.asAscii(paint.getDrawing());</span>
+<span class="fc" id="L44">                    command = view.ask();</span>
+<span class="fc" id="L45">                    break;</span>
+                case &quot;list&quot;:
+<span class="fc" id="L47">                    System.out.println(paint.getDrawing().toString());</span>
+<span class="fc" id="L48">                    command = view.ask();</span>
+<span class="fc" id="L49">                    break;</span>
+                case &quot;group&quot;:
+<span class="fc" id="L51">                    paint.newGroup(Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L52">                            Integer.parseInt(tokens.nextToken()));</span>
+<span class="fc" id="L53">                    command = view.ask();</span>
+<span class="fc" id="L54">                    break;</span>
+                case &quot;move&quot;:
+<span class="fc" id="L56">                    paint.move(Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L57">                            Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L58">                            Integer.parseInt(tokens.nextToken()));</span>
+<span class="fc" id="L59">                    command = view.ask();</span>
+<span class="fc" id="L60">                    break;</span>
+                case &quot;color&quot;:
+<span class="nc" id="L62">                    paint.color(Integer.parseInt(tokens.nextToken()),</span>
+<span class="nc" id="L63">                            paint.convertToColor(command.charAt(command.length() - 1)));</span>
+<span class="nc" id="L64">                    command = view.ask();</span>
+<span class="nc" id="L65">                    break;</span>
+                case &quot;load&quot;:
+<span class="nc" id="L67">                    load(tokens.nextToken());</span>
+<span class="nc" id="L68">                    command = view.ask();</span>
+<span class="nc" id="L69">                    break;</span>
+                case &quot;remove&quot;:
+<span class="fc" id="L71">                    paint.getDrawing().remove(Integer.parseInt(tokens.nextToken()));</span>
+<span class="fc" id="L72">                    command = view.ask();</span>
+<span class="fc" id="L73">                    break;</span>
+                case &quot;eof&quot;:
+<span class="nc" id="L75">                    view.reset();</span>
+<span class="nc" id="L76">                    command = view.ask();</span>
+<span class="nc" id="L77">                    break;</span>
+
+                case &quot;pause&quot;:
+<span class="fc" id="L80">                    pause = Integer.parseInt(tokens.nextToken());</span>
+<span class="fc" id="L81">                    command = view.ask();</span>
+<span class="fc" id="L82">                    break;</span>
+                case &quot;undo&quot;:
+<span class="fc" id="L84">                    paint.undo();</span>
+<span class="fc" id="L85">                    command = view.ask();</span>
+<span class="fc" id="L86">                    break;</span>
+                case &quot;redo&quot;:
+<span class="nc" id="L88">                    paint.redo();</span>
+<span class="nc" id="L89">                    command = view.ask();</span>
+<span class="nc" id="L90">                    break;</span>
+                default:
+<span class="fc" id="L92">                    verify(command);</span>
+<span class="fc" id="L93">                    command = view.ask();</span>
+                    break;
+            }
+<span class="fc" id="L96">        }</span>
+<span class="nc" id="L97">        System.exit(0);</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Vérifie que la commande entrée pour créer une forme soit sous la bonne
+     * forme.
+     *
+     * @param command la ligne entrée par l'utilisateur.
+     */
+    private void verify(String command) {
+<span class="fc" id="L107">        StringTokenizer tokens = new StringTokenizer(command);</span>
+<span class="fc" id="L108">        tokens.nextToken();</span>
+<span class="pc bpc" id="L109" title="6 of 18 branches missed.">        switch (tokens.nextToken()) {</span>
+            case &quot;circle&quot;:
+<span class="fc" id="L111">                tokenizeCircle(command);</span>
+<span class="fc" id="L112">                break;</span>
+            case &quot;rectangle&quot;:
+<span class="fc" id="L114">                tokenizeRectangle(command);</span>
+<span class="fc" id="L115">                break;</span>
+            case &quot;square&quot;:
+<span class="fc" id="L117">                tokenizeSquare(command);</span>
+<span class="fc" id="L118">                break;</span>
+            case &quot;line&quot;:
+<span class="fc" id="L120">                tokenizeLine(command);</span>
+<span class="fc" id="L121">                break;</span>
+            default:
+<span class="nc" id="L123">                System.out.println(&quot;Incorrect format. Type help for the list of commands&quot;);</span>
+                break;
+        }
+<span class="fc" id="L126">    }</span>
+
+    /**
+     * Gère la création d'un cercle en extrayant les paramètres de la commande
+     * de l'utilisateur.
+     *
+     * @param command la commande donnée par l'utilisateur.
+     */
+    private void tokenizeCircle(String command) {
+<span class="fc" id="L135">        StringTokenizer tokens = new StringTokenizer(command);</span>
+<span class="fc" id="L136">        tokens.nextToken();</span>
+<span class="fc" id="L137">        tokens.nextToken();</span>
+<span class="fc" id="L138">        paint.newCircle(Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L139">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L140">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L141">                paint.convertToColor(command.charAt(command.length() - 1)));</span>
+<span class="fc" id="L142">    }</span>
+
+    /**
+     * Gère la création d'un rectangle en extrayant les paramètres de la
+     * commande de l'utilisateur.
+     *
+     * @param command la commande donnée par l'utilisateur.
+     */
+    private void tokenizeRectangle(String command) {
+<span class="fc" id="L151">        StringTokenizer tokens = new StringTokenizer(command);</span>
+<span class="fc" id="L152">        tokens.nextToken();</span>
+<span class="fc" id="L153">        tokens.nextToken();</span>
+<span class="fc" id="L154">        paint.newRectangle(Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L155">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L156">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L157">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L158">                paint.convertToColor(command.charAt(command.length() - 1)));</span>
+<span class="fc" id="L159">    }</span>
+
+    /**
+     * Gère la création d'un carré en extrayant les paramètres de la commande de
+     * l'utilisateur.
+     *
+     * @param command la commande donnée par l'utilisateur.
+     */
+    private void tokenizeSquare(String command) {
+<span class="fc" id="L168">        StringTokenizer tokens = new StringTokenizer(command);</span>
+<span class="fc" id="L169">        tokens.nextToken();</span>
+<span class="fc" id="L170">        tokens.nextToken();</span>
+<span class="fc" id="L171">        paint.newSquare(Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L172">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L173">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L174">                paint.convertToColor(command.charAt(command.length() - 1)));</span>
+<span class="fc" id="L175">    }</span>
+
+    /**
+     * Gère la création d'une droite en extrayant les paramètres de la commande
+     * de l'utilisateur.
+     *
+     * @param command la commande donnée par l'utilisateur.
+     */
+    private void tokenizeLine(String command) {
+<span class="fc" id="L184">        StringTokenizer tokens = new StringTokenizer(command);</span>
+<span class="fc" id="L185">        tokens.nextToken();</span>
+<span class="fc" id="L186">        tokens.nextToken();</span>
+<span class="fc" id="L187">        paint.newLine(Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L188">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L189">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L190">                Integer.parseInt(tokens.nextToken()),</span>
+<span class="fc" id="L191">                paint.convertToColor(command.charAt(command.length() - 1)));</span>
+<span class="fc" id="L192">    }</span>
+
+    /**
+     * Met en pause le programme après chaque commande
+     *
+     * @throws InterruptedException l'interruption causée par la pause
+     */
+    private void pause() throws InterruptedException {
+<span class="fc" id="L200">        Thread.sleep(pause);</span>
+<span class="fc" id="L201">    }</span>
+
+    /**
+     * Permet d'utiliser un fichier comme entrée pour les commandes
+     */
+    private void load(String file) {
+<span class="nc" id="L207">        view.setInput(file);</span>
+<span class="nc" id="L208">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

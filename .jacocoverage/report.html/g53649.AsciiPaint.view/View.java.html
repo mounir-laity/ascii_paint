@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>View.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;g53649_AsciiPaint&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">g53649.AsciiPaint.view</a> &gt; <span class="el_source">View.java</span></div><h1>View.java</h1><pre class="source lang-java linenums">package g53649.AsciiPaint.view;
+
+import g53649.AsciiPaint.model.Drawing;
+import g53649.AsciiPaint.model.Point;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author laity
+ */
+<span class="fc" id="L15">public class View {</span>
+
+<span class="fc" id="L17">    private Scanner kb = new Scanner(System.in);</span>
+
+    /**
+     * Change l'entrée du clavier vers le fichier dessin.txt en racine du projet
+     */
+    public void setInput(String file) {
+        try {
+<span class="nc" id="L24">            kb = new Scanner(Paths.get(file));</span>
+<span class="nc" id="L25">        } catch (IOException ex) {</span>
+<span class="nc" id="L26">            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L27">        }</span>
+<span class="nc" id="L28">    }</span>
+
+    /**
+     * Réinitialise l'entrée vers le clavier
+     */
+    public void reset() {
+<span class="nc" id="L34">        kb = new Scanner(System.in);</span>
+<span class="nc" id="L35">    }</span>
+
+    /**
+     * Permet à l'utilisateur d'entrer une commande
+     *
+     * @return la commande entrée par l'utilisateur
+     */
+    public String ask() {
+<span class="fc" id="L43">        String command = kb.nextLine();</span>
+<span class="fc" id="L44">        return command;</span>
+    }
+
+    /**
+     * Indique à l'utilisateur quelles sont les commandes possibles.
+     */
+    public void help() {
+<span class="nc" id="L51">        System.out.println(&quot;Here's the list of all other possible commands : &quot;);</span>
+<span class="nc" id="L52">        System.out.println(&quot;add circle x y radius color&quot;);</span>
+<span class="nc" id="L53">        System.out.println(&quot;add rectangle x y width height color&quot;);</span>
+<span class="nc" id="L54">        System.out.println(&quot;add square x y side color&quot;);</span>
+<span class="nc" id="L55">        System.out.println(&quot;add line x1 y1 x2 y2 color&quot;);</span>
+<span class="nc" id="L56">        System.out.println(&quot;color index &lt;color&gt;&quot;);</span>
+<span class="nc" id="L57">        System.out.println(&quot;group index1 index2&quot;);</span>
+<span class="nc" id="L58">        System.out.println(&quot;help&quot;);</span>
+<span class="nc" id="L59">        System.out.println(&quot;list&quot;);</span>
+<span class="nc" id="L60">        System.out.println(&quot;load&quot;);</span>
+<span class="nc" id="L61">        System.out.println(&quot;move dx dy&quot;);</span>
+<span class="nc" id="L62">        System.out.println(&quot;pause x&quot;);</span>
+<span class="nc" id="L63">        System.out.println(&quot;remove index&quot;);</span>
+<span class="nc" id="L64">        System.out.println(&quot;show&quot;);</span>
+<span class="nc" id="L65">        System.out.println(&quot;undo&quot;);</span>
+<span class="nc" id="L66">        System.out.println(&quot;redo&quot;);</span>
+<span class="nc" id="L67">        System.out.println(&quot;quit&quot;);</span>
+<span class="nc" id="L68">        System.out.println(&quot;&quot;);</span>
+<span class="nc" id="L69">    }</span>
+
+    /**
+     * Permet de représenter sur l'output les différentes formes ajoutées par
+     * l'utilisateur.
+     *
+     * @param drawing le canevas à remplir
+     */
+    public void asAscii(Drawing drawing) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        for (int i = 0; i &lt; drawing.getWidth(); i++) {</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">            for (int j = 0; j &lt; drawing.getHeight(); j++) {</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">                if (drawing.getShapeAt(new Point(i, j)) == null) {</span>
+<span class="fc" id="L81">                    System.out.print(&quot; &quot;);</span>
+                } else {
+<span class="fc" id="L83">                    System.out.print(drawing.getShapeAt(new Point(i, j)).getColor().toString());</span>
+                }
+            }
+<span class="fc" id="L86">            System.out.print(&quot;\n&quot;);</span>
+        }
+<span class="fc" id="L88">    }</span>
+
+    /**
+     * getter du scanner
+     *
+     * @return le scanner
+     */
+    Scanner getKb() {
+<span class="nc" id="L96">        return kb;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

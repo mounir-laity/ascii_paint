@@ -163,9 +163,10 @@ public class AsciiPaint {
     public void redo() {
         if (redostack.isEmpty()) {
             System.out.println("No action to redo");
-        }
+        } else {
         redostack.peek().execute();
         undostack.push(redostack.pop());
+    }
     }
 
     /**

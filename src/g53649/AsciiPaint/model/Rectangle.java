@@ -1,5 +1,7 @@
 package g53649.AsciiPaint.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author laity
@@ -67,5 +69,40 @@ public class Rectangle extends ColoredShape {
     public String toString() {
         return "Rectangle : [" + upperLeft + " " + width + " " + height +" " +color+']';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.upperLeft);
+        hash = 97 * hash + this.width;
+        hash = 97 * hash + this.height;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if(!(obj instanceof Rectangle)) {
+            return false;
+        }
+        final Rectangle other = (Rectangle) obj;
+        if (this.width != other.width) {
+            return false;
+        }
+        if (this.height != other.height) {
+            return false;
+        }
+        if (!Objects.equals(this.upperLeft, other.upperLeft)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }
