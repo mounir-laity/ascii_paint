@@ -57,7 +57,7 @@ public class View {
         System.out.println("group index1 index2");
         System.out.println("help");
         System.out.println("list");
-        System.out.println("load");
+        System.out.println("load filename");
         System.out.println("move dx dy");
         System.out.println("pause x");
         System.out.println("remove index");
