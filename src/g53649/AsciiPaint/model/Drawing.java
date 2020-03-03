@@ -71,11 +71,8 @@ public class Drawing {
      * @param dy le décalage vertical
      */
     void move(int index, int dx, int dy) {
-        if (index > shapes.size()) {
-            System.out.println("There is no shape at this index");
-        } else {
+        // vérifier ou pas l'index.
             shapes.get(index).move(dx, dy);
-        }
     }
 
     /**
@@ -85,7 +82,7 @@ public class Drawing {
      * @param color la nouvelle couleur de la forme
      */
     void changeColor(int index, Color color) {
-        shapes.get(index).setColor(color);
+        shapes.get(index).setColor(color); // on vérifier pas l'index ici ?
     }
 
     /**

@@ -1,3 +1,4 @@
+pause 500
 add square 8 8 4 r
 show
 move 0 5 5

@@ -19,6 +19,7 @@ public class AsciiPaint {
      * @param height la hauteur du canvas.
      */
     public AsciiPaint(int width, int height) {
+        // on vérifier les params.
         drawing = new Drawing(width, height);
         undostack = new Stack<>();
         redostack = new Stack<>();
@@ -33,9 +34,11 @@ public class AsciiPaint {
      * @param color la couleur du cercle.
      */
     public void newCircle(int x, int y, int radius, Color color) {
+        // dans la facade on vérfiie les params: rien de pourri ne doit rentrer dans le modèle
         Command add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
         add.execute();
         undostack.push(add);
+        // clear redo stack.
     }
 
     /**
@@ -51,6 +54,7 @@ public class AsciiPaint {
         Command add = new AddCommand(drawing, new Rectangle(new Point(x, y), width, height, color));
         add.execute();
         undostack.push(add);
+        // clear redo
     }
 
     /**
@@ -125,7 +129,7 @@ public class AsciiPaint {
      * @param c le caractère à convertir
      * @return la couleur correspondant au caractère entré (bleu par défaut)
      */
-    public Color convertToColor(char c) {
+    public Color convertToColor(char c) { // dans le controller.
         switch (c) {
             case 'r':
                 return Color.RED;
@@ -164,9 +168,9 @@ public class AsciiPaint {
         if (redostack.isEmpty()) {
             System.out.println("No action to redo");
         } else {
-        redostack.peek().execute();
-        undostack.push(redostack.pop());
-    }
+            redostack.peek().execute();
+            undostack.push(redostack.pop());
+        }
     }
 
     /**
@@ -174,7 +178,7 @@ public class AsciiPaint {
      *
      * @return le canevas où sont placées les formes
      */
-    public Drawing getDrawing() {
+    public Drawing getDrawing() { // bof.
         return drawing;
     }
 

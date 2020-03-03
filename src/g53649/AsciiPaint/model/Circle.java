@@ -22,7 +22,7 @@ public class Circle extends ColoredShape {
     Circle(Point center, int radius, Color color) {
         super(color);
         if (radius <= 0) {
-            throw new IllegalArgumentException("The radius must be positive");
+            throw new IllegalArgumentException("The radius must be positive: "+radius);
         }
         this.center = new Point(center);
         this.radius = radius;
@@ -51,7 +51,7 @@ public class Circle extends ColoredShape {
      */
     @Override
     public void move(int dx, int dy) {
-        center = new Point(center.getX() + dx, center.getY() + dy);
+        center.move(dx, dy);
     }
 
     /**

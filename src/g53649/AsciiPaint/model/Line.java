@@ -23,7 +23,7 @@ public class Line extends ColoredShape {
         if (firstPoint.equals(secondPoint)) {
             throw new IllegalArgumentException("The two points must be different ");
         }
-        this.p1 = firstPoint;
+        this.p1 = firstPoint; // copie.
         this.p2 = secondPoint;
     }
 
@@ -35,7 +35,8 @@ public class Line extends ColoredShape {
      */
     @Override
     public boolean isInside(Point p) {
-        int i = (p1.getY() - p2.getY()) * p.getX() + (p2.getX() - p1.getX()) * p.getY()
+        int i = (p1.getY() - p2.getY()) * p.getX() 
+                + (p2.getX() - p1.getX()) * p.getY()
                 + p1.getX() * p2.getY() - p2.getX() * p1.getY();
         return i > -5 && i < 5;
     }
@@ -48,8 +49,8 @@ public class Line extends ColoredShape {
      */
     @Override
     public void move(int dx, int dy) {
-        p1 = new Point(p1.getX() + dx, p1.getY() + dy);
-        p2 = new Point(p2.getX() + dx, p2.getY() + dy);
+        p1.move(dx, dy);
+        p2.move(dx, dy);
     }
 
     /**

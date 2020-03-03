@@ -74,7 +74,7 @@ public class View {
      *
      * @param drawing le canevas à remplir
      */
-    public void asAscii(Drawing drawing) {
+    public void asAscii(Drawing drawing) { // AsciiPaint.getWidth, getHeight, getColorAt(x,y)
         for (int i = 0; i < drawing.getWidth(); i++) {
             for (int j = 0; j < drawing.getHeight(); j++) {
                 if (drawing.getShapeAt(new Point(i, j)) == null) {

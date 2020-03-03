@@ -8,7 +8,7 @@ public class GroupCommand implements Command {
 
     private final Drawing drawing;
     private final Group group;
-    private final int index1;
+    private final int index1; // stocker les Shape
     private final int index2;
 
     /**

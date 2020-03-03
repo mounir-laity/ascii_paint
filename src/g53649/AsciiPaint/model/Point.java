@@ -1,7 +1,7 @@
 package g53649.AsciiPaint.model;
 
 /**
- *
+ * JAVADOC!!! Represents a point.
  * @author laity
  */
 public class Point {

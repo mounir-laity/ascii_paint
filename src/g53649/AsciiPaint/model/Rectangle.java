@@ -57,7 +57,7 @@ public class Rectangle extends ColoredShape {
      */
     @Override
     public void move(int dx, int dy) {
-        upperLeft = new Point(upperLeft.getX() + dx, upperLeft.getY() + dy);
+        upperLeft.move(dx, dy);
     }
 
     /**

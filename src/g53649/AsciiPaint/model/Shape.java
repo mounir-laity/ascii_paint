@@ -7,7 +7,7 @@ package g53649.AsciiPaint.model;
 public interface Shape {
 
     /**
-     * Vérifie qu'un point se trouve dans la forme ou non.
+     * Vérifie qu'un point se trouve dans la forme ou non. // TOUT EN ANGLAIS.
      *
      * @param p le point à vérifier.
      * @return true s'il se trouve dans la forme, false sinon.

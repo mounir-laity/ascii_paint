@@ -16,9 +16,12 @@ public class Square extends Rectangle {
      */
      Square(Point upperLeft, int side, Color color) {
         super(upperLeft, side, side, color);
-        if (side <= 0) {
-            throw new IllegalArgumentException("The side must be positive");
-        }
     }
 
+    @Override
+    public String toString() {
+        return super.toString();// ou changer pour être plus précis pour le carré en ajoutant getwidht et getHeight dans REctangle.
+    }
+
+     
 }
